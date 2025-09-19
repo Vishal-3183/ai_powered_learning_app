@@ -8,8 +8,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 app = Flask(__name__)
 
 # --- API Key Configuration ---
-# PASTE YOUR NEW GOOGLE AI API KEY HERE
-GOOGLE_AI_API_KEY = "AIzaSyBA2KW_qriB0RaiCoQUi3fY64OP3NA9iAU"
+# PASTE YOUR NEW GOOGLE AI API KEY HERE in a .env file
+GOOGLE_AI_API_KEY = ""
 genai.configure(api_key=GOOGLE_AI_API_KEY)
 
 # --- Main Application Code ---
