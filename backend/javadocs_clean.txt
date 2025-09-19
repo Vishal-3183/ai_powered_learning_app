@@ -1,0 +1,4504 @@
+Class String
+java.lang.Object
+java.lang.String
+All Implemented Interfaces:
+Serializable
+CharSequence
+ConstantDesc
+public final class
+Serializable
+CharSequence
+ConstantDesc
+class represents character strings. All
+string literals in Java programs, such as
+implemented as instances of this class.
+Strings are constant; their values cannot be changed after they
+are created. String buffers support mutable strings.
+Because String objects are immutable they can be shared. For example:
+String str = "abc";
+is equivalent to:
+char data[] = {'a', 'b', 'c'};
+String str = new String(data);
+Here are some more examples of how strings can be used:
+System.out.println("abc");
+String cde = "cde";
+System.out.println("abc" + cde);
+String c = "abc".substring(2, 3);
+String d = cde.substring(1, 2);
+includes methods for examining
+individual characters of the sequence, for comparing strings, for
+searching strings, for extracting substrings, and for creating a
+copy of a string with all characters translated to uppercase or to
+lowercase. Case mapping is based on the Unicode Standard version
+specified by the
+The Java language provides special support for the string
+concatenation operator ( + ), and for conversion of
+other objects to strings. For additional information on string
+concatenation and conversion, see
+The Java Language Specification
+Unless otherwise noted, passing a
+argument to a constructor
+or method in this class will cause a
+NullPointerException
+represents a string in the UTF-16 format
+supplementary characters
+are represented by
+(see the section
+Character Representations
+more information).
+Index values refer to
+code units, so a supplementary
+character uses two positions in a
+class provides methods for dealing with
+Unicode code points (i.e., characters), in addition to those for
+dealing with Unicode code units (i.e.,
+Unless otherwise noted, methods for comparing Strings do not take locale
+into account.  The
+class provides methods for
+finer-grain, locale-sensitive String comparison.
+Implementation Note:
+The implementation of the string concatenation operator is left to
+the discretion of a Java compiler, as long as the compiler ultimately conforms
+The Java Language Specification
+. For example, the
+may implement the operator with
+StringBuffer
+StringBuilder
+java.lang.invoke.StringConcatFactory
+depending on the JDK version. The
+implementation of string conversion is typically through the method
+and inherited by all classes in Java.
+Java Language Specification
+15.18.1 String Concatenation Operator +
+Object.toString()
+StringBuffer
+StringBuilder
+Serialized Form
+Field Summary
+Modifier and Type
+Description
+static final
+CASE_INSENSITIVE_ORDER
+A Comparator that orders
+objects as by
+compareToIgnoreCase
+Constructor Summary
+Constructors
+Constructor
+Description
+Initializes a newly created
+object so that it represents
+an empty character sequence.
+(byte[] bytes)
+Constructs a new
+by decoding the specified array of bytes
+using the platform's default charset.
+(byte[] ascii,
+int hibyte)
+Deprecated.
+This method does not properly convert bytes into
+characters.
+(byte[] bytes,
+int offset,
+int length)
+Constructs a new
+by decoding the specified subarray of
+bytes using the platform's default charset.
+(byte[] ascii,
+int hibyte,
+int offset,
+Deprecated.
+This method does not properly convert bytes into characters.
+(byte[] bytes,
+int offset,
+int length,
+charsetName)
+Constructs a new
+by decoding the specified subarray of
+bytes using the specified charset.
+(byte[] bytes,
+int offset,
+int length,
+Constructs a new
+by decoding the specified subarray of
+bytes using the specified
+(byte[] bytes,
+charsetName)
+Constructs a new
+by decoding the specified array of bytes
+using the specified
+(byte[] bytes,
+Constructs a new
+by decoding the specified array of
+bytes using the specified
+(char[] value)
+Allocates a new
+so that it represents the sequence of
+characters currently contained in the character array argument.
+(char[] value,
+int offset,
+Allocates a new
+that contains characters from a subarray
+of the character array argument.
+(int[] codePoints,
+int offset,
+Allocates a new
+that contains characters from a subarray
+Unicode code point
+Initializes a newly created
+object so that it represents
+the same sequence of characters as the argument; in other words, the
+newly created string is a copy of the argument string.
+StringBuffer
+Allocates a new string that contains the sequence of characters
+currently contained in the string buffer argument.
+StringBuilder
+Allocates a new string that contains the sequence of characters
+currently contained in the string builder argument.
+Method Summary
+All Methods
+Static Methods
+Instance Methods
+Concrete Methods
+Deprecated Methods
+Modifier and Type
+Description
+(int index)
+Returns the
+value at the
+specified index.
+Returns a stream of
+zero-extending the
+from this sequence.
+codePointAt
+(int index)
+Returns the character (Unicode code point) at the specified
+codePointBefore
+(int index)
+Returns the character (Unicode code point) before the specified
+codePointCount
+(int beginIndex,
+int endIndex)
+Returns the number of Unicode code points in the specified text
+range of this
+Returns a stream of code point values from this sequence.
+anotherString)
+Compares two strings lexicographically.
+compareToIgnoreCase
+Compares two strings lexicographically, ignoring case
+differences.
+Concatenates the specified string to the end of this string.
+CharSequence
+Returns true if and only if this string contains the specified
+sequence of char values.
+contentEquals
+CharSequence
+Compares this string to the specified
+CharSequence
+contentEquals
+StringBuffer
+Compares this string to the specified
+StringBuffer
+copyValueOf
+(char[] data)
+Equivalent to
+valueOf(char[])
+copyValueOf
+(char[] data,
+int offset,
+Equivalent to
+valueOf(char[], int, int)
+describeConstable
+containing the nominal descriptor for this
+instance, which is the instance itself.
+Tests if this string ends with the specified suffix.
+Compares this string to the specified object.
+equalsIgnoreCase
+anotherString)
+Compares this
+, ignoring case
+considerations.
+Returns a formatted string using the specified format string and
+Returns a formatted string using the specified locale, format string,
+and arguments.
+Formats using this string as the format string, and the supplied
+Encodes this
+into a sequence of bytes using the
+platform's default charset, storing the result into a new byte array.
+(int srcBegin,
+int srcEnd,
+byte[] dst,
+int dstBegin)
+Deprecated.
+This method does not properly convert characters into
+charsetName)
+Encodes this
+into a sequence of bytes using the named
+charset, storing the result into a new byte array.
+Encodes this
+into a sequence of bytes using the given
+, storing the result into a
+new byte array.
+(int srcBegin,
+int srcEnd,
+char[] dst,
+int dstBegin)
+Copies characters from this string into the destination character
+Returns a hash code for this string.
+Adjusts the indentation of each line of this string based on the value of
+, and normalizes line termination characters.
+Returns the index within this string of the first occurrence of
+the specified character.
+int fromIndex)
+Returns the index within this string of the first occurrence of the
+specified character, starting the search at the specified index.
+Returns the index within this string of the first occurrence of the
+specified substring.
+int fromIndex)
+Returns the index within this string of the first occurrence of the
+specified substring, starting at the specified index.
+Returns a canonical representation for the string object.
+if the string is empty or contains only
+white space
+codepoints,
+if, and only if,
+CharSequence
+CharSequence
+... elements)
+Returns a new String composed of copies of the
+CharSequence elements
+joined together with a copy of
+the specified
+CharSequence
+CharSequence
+> elements)
+Returns a new
+composed of copies of the
+CharSequence elements
+joined together with a copy of the
+lastIndexOf
+Returns the index within this string of the last occurrence of
+the specified character.
+lastIndexOf
+int fromIndex)
+Returns the index within this string of the last occurrence of
+the specified character, searching backward starting at the
+specified index.
+lastIndexOf
+Returns the index within this string of the last occurrence of the
+specified substring.
+lastIndexOf
+int fromIndex)
+Returns the index within this string of the last occurrence of the
+specified substring, searching backward starting at the specified index.
+Returns the length of this string.
+Returns a stream of lines extracted from this string,
+separated by line terminators.
+Tells whether or not this string matches the given
+regular expression
+offsetByCodePoints
+(int index,
+int codePointOffset)
+Returns the index within this
+offset from the given
+codePointOffset
+code points.
+regionMatches
+(boolean ignoreCase,
+int toffset,
+int ooffset,
+Tests if two string regions are equal.
+regionMatches
+(int toffset,
+int ooffset,
+Tests if two string regions are equal.
+(int count)
+Returns a string whose value is the concatenation of this
+string repeated
+(char oldChar,
+char newChar)
+Returns a string resulting from replacing all occurrences of
+in this string with
+CharSequence
+CharSequence
+replacement)
+Replaces each substring of this string that matches the literal target
+sequence with the specified literal replacement sequence.
+replacement)
+Replaces each substring of this string that matches the given
+regular expression
+given replacement.
+replaceFirst
+replacement)
+Replaces the first substring of this string that matches the given
+regular expression
+given replacement.
+resolveConstantDesc
+MethodHandles.Lookup
+Resolves this instance as a
+ConstantDesc
+, the result of which is
+the instance itself.
+Splits this string around matches of the given
+regular expression
+Splits this string around matches of the given
+regular expression
+Tests if this string starts with the specified prefix.
+int toffset)
+Tests if the substring of this string beginning at the
+specified index starts with the specified prefix.
+Returns a string whose value is this string, with all leading
+and trailing
+white space
+stripIndent
+Returns a string whose value is this string, with incidental
+white space
+removed from
+the beginning and end of every line.
+stripLeading
+Returns a string whose value is this string, with all leading
+white space
+stripTrailing
+Returns a string whose value is this string, with all trailing
+white space
+CharSequence
+subSequence
+(int beginIndex,
+int endIndex)
+Returns a character sequence that is a subsequence of this sequence.
+(int beginIndex)
+Returns a string that is a substring of this string.
+(int beginIndex,
+int endIndex)
+Returns a string that is a substring of this string.
+toCharArray
+Converts this string to a new character array.
+toLowerCase
+Converts all of the characters in this
+case using the rules of the default locale.
+toLowerCase
+Converts all of the characters in this
+case using the rules of the given
+This object (which is already a string!)
+toUpperCase
+Converts all of the characters in this
+case using the rules of the default locale.
+toUpperCase
+Converts all of the characters in this
+case using the rules of the given
+? extends R> f)
+This method allows the application of a function to
+translateEscapes
+Returns a string whose value is this string, with escape sequences
+translated as if in a string literal.
+Returns a string whose value is this string, with all leading
+and trailing space removed, where space is defined
+as any character whose codepoint is less than or equal to
+(the space character).
+(boolean b)
+Returns the string representation of the
+Returns the string representation of the
+(char[] data)
+Returns the string representation of the
+(char[] data,
+int offset,
+Returns the string representation of a specific subarray of the
+array argument.
+Returns the string representation of the
+Returns the string representation of the
+Returns the string representation of the
+Returns the string representation of the
+Returns the string representation of the
+Methods declared in class java.lang.
+Field Details
+CASE_INSENSITIVE_ORDER
+public static final
+CASE_INSENSITIVE_ORDER
+A Comparator that orders
+objects as by
+compareToIgnoreCase
+This comparator is serializable.
+Note that this Comparator does
+take locale into account,
+and will result in an unsatisfactory ordering for certain locales.
+class provides locale-sensitive comparison.
+Constructor Details
+Initializes a newly created
+object so that it represents
+an empty character sequence.  Note that use of this constructor is
+unnecessary since Strings are immutable.
+Initializes a newly created
+object so that it represents
+the same sequence of characters as the argument; in other words, the
+newly created string is a copy of the argument string. Unless an
+explicit copy of
+is needed, use of this constructor is
+unnecessary since Strings are immutable.
+Parameters:
+(char[] value)
+Allocates a new
+so that it represents the sequence of
+characters currently contained in the character array argument. The
+contents of the character array are copied; subsequent modification of
+the character array does not affect the newly created string.
+Parameters:
+- The initial value of the string
+(char[] value,
+int offset,
+Allocates a new
+that contains characters from a subarray
+of the character array argument. The
+argument is the
+index of the first character of the subarray and the
+argument specifies the length of the subarray. The contents of the
+subarray are copied; subsequent modification of the character array does
+not affect the newly created string.
+Parameters:
+- Array that is the source of characters
+- The initial offset
+- The length
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+value.length - count
+(int[] codePoints,
+int offset,
+Allocates a new
+that contains characters from a subarray
+Unicode code point
+argument.  The
+argument is the index of the first code
+point of the subarray and the
+argument specifies the
+length of the subarray.  The contents of the subarray are converted to
+s; subsequent modification of the
+array does not
+affect the newly created string.
+Parameters:
+- Array that is the source of Unicode code points
+- The initial offset
+- The length
+IllegalArgumentException
+- If any invalid Unicode code point is found in
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+codePoints.length - count
+@Deprecated
+(byte[] ascii,
+int hibyte,
+int offset,
+Deprecated.
+This method does not properly convert bytes into characters.
+As of JDK 1.1, the preferred way to do this is via the
+constructors that take a
+, charset name, or that use the platform's
+default charset.
+Allocates a new
+constructed from a subarray of an array
+of 8-bit integer values.
+argument is the index of the first byte of the
+subarray, and the
+argument specifies the length of the
+in the subarray is converted to a
+specified in the
+String(byte[],int)
+constructor.
+Parameters:
+- The bytes to be converted to characters
+- The top 8 bits of each 16-bit Unicode code unit
+- The initial offset
+- The length
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+ascii.length - count
+String(byte[], int)
+String(byte[], int, int, java.lang.String)
+String(byte[], int, int, java.nio.charset.Charset)
+String(byte[], int, int)
+String(byte[], java.lang.String)
+String(byte[], java.nio.charset.Charset)
+String(byte[])
+@Deprecated
+(byte[] ascii,
+int hibyte)
+Deprecated.
+This method does not properly convert bytes into
+characters.  As of JDK 1.1, the preferred way to do this is via the
+constructors that take a
+, charset name, or that use the platform's
+default charset.
+Allocates a new
+containing characters constructed from
+an array of 8-bit integer values. Each character
+resulting string is constructed from the corresponding component
+in the byte array such that:
+== (char)(((hibyte & 0xff) << 8)
+Parameters:
+- The bytes to be converted to characters
+- The top 8 bits of each 16-bit Unicode code unit
+String(byte[], int, int, java.lang.String)
+String(byte[], int, int, java.nio.charset.Charset)
+String(byte[], int, int)
+String(byte[], java.lang.String)
+String(byte[], java.nio.charset.Charset)
+String(byte[])
+(byte[] bytes,
+int offset,
+int length,
+charsetName)
+UnsupportedEncodingException
+Constructs a new
+by decoding the specified subarray of
+bytes using the specified charset.  The length of the new
+is a function of the charset, and hence may not be equal to the length
+of the subarray.
+The behavior of this constructor when the given bytes are not valid
+in the given charset is unspecified.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+- The index of the first byte to decode
+- The number of bytes to decode
+charsetName
+- The name of a supported
+UnsupportedEncodingException
+- If the named charset is not supported
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+bytes.length - length
+(byte[] bytes,
+int offset,
+int length,
+Constructs a new
+by decoding the specified subarray of
+bytes using the specified
+The length of the new
+is a function of the charset, and
+hence may not be equal to the length of the subarray.
+This method always replaces malformed-input and unmappable-character
+sequences with this charset's default replacement string.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+- The index of the first byte to decode
+- The number of bytes to decode
+to be used to
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+bytes.length - length
+(byte[] bytes,
+charsetName)
+UnsupportedEncodingException
+Constructs a new
+by decoding the specified array of bytes
+using the specified
+length of the new
+is a function of the charset, and hence
+may not be equal to the length of the byte array.
+The behavior of this constructor when the given bytes are not valid
+in the given charset is unspecified.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+charsetName
+- The name of a supported
+UnsupportedEncodingException
+- If the named charset is not supported
+(byte[] bytes,
+Constructs a new
+by decoding the specified array of
+bytes using the specified
+The length of the new
+is a function of the charset, and
+hence may not be equal to the length of the byte array.
+This method always replaces malformed-input and unmappable-character
+sequences with this charset's default replacement string.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+to be used to
+(byte[] bytes,
+int offset,
+int length)
+Constructs a new
+by decoding the specified subarray of
+bytes using the platform's default charset.  The length of the new
+is a function of the charset, and hence may not be equal
+to the length of the subarray.
+The behavior of this constructor when the given bytes are not valid
+in the default charset is unspecified.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+- The index of the first byte to decode
+- The number of bytes to decode
+IndexOutOfBoundsException
+is negative,
+is negative, or
+is greater than
+bytes.length - length
+(byte[] bytes)
+Constructs a new
+by decoding the specified array of bytes
+using the platform's default charset.  The length of the new
+is a function of the charset, and hence may not be equal to the
+length of the byte array.
+The behavior of this constructor when the given bytes are not valid
+in the default charset is unspecified.  The
+CharsetDecoder
+class should be used when more control
+over the decoding process is required.
+Parameters:
+- The bytes to be decoded into characters
+StringBuffer
+Allocates a new string that contains the sequence of characters
+currently contained in the string buffer argument. The contents of the
+string buffer are copied; subsequent modification of the string buffer
+does not affect the newly created string.
+Parameters:
+StringBuffer
+StringBuilder
+Allocates a new string that contains the sequence of characters
+currently contained in the string builder argument. The contents of the
+string builder are copied; subsequent modification of the string builder
+does not affect the newly created string.
+This constructor is provided to ease migration to
+StringBuilder
+. Obtaining a string from a string builder via the
+method is likely to run faster and is generally preferred.
+Parameters:
+StringBuilder
+Method Details
+Returns the length of this string.
+The length is equal to the number of
+in the string.
+Specified by:
+in interface
+CharSequence
+the length of the sequence of characters represented by this
+if, and only if,
+Specified by:
+in interface
+CharSequence
+, otherwise
+(int index)
+Returns the
+value at the
+specified index. An index ranges from
+length() - 1
+. The first
+value of the sequence
+is at index
+, the next at index
+and so on, as for array indexing.
+value specified by the index is a
+, the surrogate
+value is returned.
+Specified by:
+in interface
+CharSequence
+Parameters:
+- the index of the
+value at the specified index of this string.
+value is at index
+IndexOutOfBoundsException
+argument is negative or not less than the length of this
+codePointAt
+codePointAt
+(int index)
+Returns the character (Unicode code point) at the specified
+index. The index refers to
+(Unicode code units) and ranges from
+value specified at the given index
+is in the high-surrogate range, the following index is less
+than the length of this
+value at the following index is in the
+low-surrogate range, then the supplementary code point
+corresponding to this surrogate pair is returned. Otherwise,
+value at the given index is returned.
+Parameters:
+- the index to the
+the code point value of the character at the
+IndexOutOfBoundsException
+argument is negative or not less than the length of this
+codePointBefore
+codePointBefore
+(int index)
+Returns the character (Unicode code point) before the specified
+index. The index refers to
+(Unicode code units) and ranges from
+(index - 1)
+is in the low-surrogate range,
+(index - 2)
+negative, and the
+is in the high-surrogate range, then the
+supplementary code point value of the surrogate pair is
+returned. If the
+is an unpaired low-surrogate or a high-surrogate, the
+surrogate value is returned.
+Parameters:
+- the index following the code point that should be returned
+the Unicode code point value before the given index.
+IndexOutOfBoundsException
+argument is less than 1 or greater than the length
+of this string.
+codePointCount
+codePointCount
+(int beginIndex,
+int endIndex)
+Returns the number of Unicode code points in the specified text
+range of this
+. The text range begins at the
+and extends to the
+endIndex - 1
+s) of the text range is
+endIndex-beginIndex
+. Unpaired surrogates within
+the text range count as one code point each.
+Parameters:
+- the index to the first
+the text range.
+- the index after the last
+the text range.
+the number of Unicode code points in the specified text
+IndexOutOfBoundsException
+is negative, or
+is larger than the length of this
+is larger than
+offsetByCodePoints
+offsetByCodePoints
+(int index,
+int codePointOffset)
+Returns the index within this
+offset from the given
+codePointOffset
+code points. Unpaired surrogates
+within the text range given by
+codePointOffset
+count as one code point each.
+Parameters:
+- the index to be offset
+codePointOffset
+- the offset in code points
+the index within this
+IndexOutOfBoundsException
+is negative or larger then the length of this
+codePointOffset
+is positive
+and the substring starting with
+codePointOffset
+code points,
+codePointOffset
+is negative and the substring
+has fewer than the absolute value
+codePointOffset
+code points.
+(int srcBegin,
+int srcEnd,
+char[] dst,
+int dstBegin)
+Copies characters from this string into the destination character
+The first character to be copied is at index
+the last character to be copied is at index
+(thus the total number of characters to be copied is
+srcEnd-srcBegin
+). The characters are copied into the
+subarray of
+starting at index
+and ending at index:
+dstBegin + (srcEnd-srcBegin) - 1
+Parameters:
+- index of the first character in the string
+- index after the last character in the string
+- the destination array.
+- the start offset in the destination array.
+IndexOutOfBoundsException
+- If any of the following
+is negative.
+is greater than
+is greater than the length of this
+is negative
+dstBegin+(srcEnd-srcBegin)
+is larger than
+@Deprecated
+(int srcBegin,
+int srcEnd,
+byte[] dst,
+int dstBegin)
+Deprecated.
+This method does not properly convert characters into
+bytes.  As of JDK 1.1, the preferred way to do this is via the
+method, which uses the platform's default charset.
+Copies characters from this string into the destination byte array. Each
+byte receives the 8 low-order bits of the corresponding character. The
+eight high-order bits of each character are not copied and do not
+participate in the transfer in any way.
+The first character to be copied is at index
+last character to be copied is at index
+.  The total
+number of characters to be copied is
+srcEnd-srcBegin
+characters, converted to bytes, are copied into the subarray of
+starting at index
+and ending at index:
+dstBegin + (srcEnd-srcBegin) - 1
+Parameters:
+- Index of the first character in the string to copy
+- Index after the last character in the string to copy
+- The destination array
+- The start offset in the destination array
+IndexOutOfBoundsException
+- If any of the following is true:
+is negative
+is greater than
+is greater than the length of this String
+is negative
+dstBegin+(srcEnd-srcBegin)
+is larger than
+charsetName)
+UnsupportedEncodingException
+Encodes this
+into a sequence of bytes using the named
+charset, storing the result into a new byte array.
+The behavior of this method when this string cannot be encoded in
+the given charset is unspecified.  The
+CharsetEncoder
+class should be used when more control
+over the encoding process is required.
+Parameters:
+charsetName
+- The name of a supported
+The resultant byte array
+UnsupportedEncodingException
+- If the named charset is not supported
+Encodes this
+into a sequence of bytes using the given
+, storing the result into a
+new byte array.
+This method always replaces malformed-input and unmappable-character
+sequences with this charset's default replacement byte array.  The
+CharsetEncoder
+class should be used when more
+control over the encoding process is required.
+Parameters:
+to be used to encode
+The resultant byte array
+Encodes this
+into a sequence of bytes using the
+platform's default charset, storing the result into a new byte array.
+The behavior of this method when this string cannot be encoded in
+the default charset is unspecified.  The
+CharsetEncoder
+class should be used when more control
+over the encoding process is required.
+The resultant byte array
+Compares this string to the specified object.  The result is
+if and only if the argument is not
+object that represents the same sequence of characters as this
+For finer-grained String comparison, refer to
+Parameters:
+- The object to compare this
+if the given object represents a
+equivalent to this string,
+compareTo(String)
+equalsIgnoreCase(String)
+contentEquals
+contentEquals
+StringBuffer
+Compares this string to the specified
+StringBuffer
+.  The result
+if and only if this
+represents the same
+sequence of characters as the specified
+StringBuffer
+. This method
+synchronizes on the
+StringBuffer
+For finer-grained String comparison, refer to
+Parameters:
+StringBuffer
+to compare this
+represents the same
+sequence of characters as the specified
+StringBuffer
+contentEquals
+contentEquals
+CharSequence
+Compares this string to the specified
+CharSequence
+if and only if this
+represents the
+same sequence of char values as the specified sequence. Note that if the
+CharSequence
+StringBuffer
+then the method
+synchronizes on it.
+For finer-grained String comparison, refer to
+Parameters:
+- The sequence to compare this
+represents the same
+sequence of char values as the specified sequence,
+equalsIgnoreCase
+equalsIgnoreCase
+anotherString)
+Compares this
+, ignoring case
+considerations.  Two strings are considered equal ignoring case if they
+are of the same length and corresponding Unicode code points in the two
+strings are equal ignoring case.
+Two Unicode code points are considered the same
+ignoring case if at least one of the following is true:
+The two Unicode code points are the same (as compared by the
+Character.toLowerCase(Character.toUpperCase(int))
+on each Unicode code point produces the same result
+Note that this method does
+take locale into account, and
+will result in unsatisfactory results for certain locales.  The
+class provides locale-sensitive comparison.
+Parameters:
+anotherString
+to compare this
+if the argument is not
+represents an equivalent
+ignoring case;
+equals(Object)
+codePoints()
+anotherString)
+Compares two strings lexicographically.
+The comparison is based on the Unicode value of each character in
+the strings. The character sequence represented by this
+object is compared lexicographically to the
+character sequence represented by the argument string. The result is
+a negative integer if this
+lexicographically precedes the argument string. The result is a
+positive integer if this
+object lexicographically
+follows the argument string. The result is zero if the strings
+exactly when
+equals(Object)
+method would return
+This is the definition of lexicographic ordering. If two strings are
+different, then either they have different characters at some index
+that is a valid index for both strings, or their lengths are different,
+or both. If they have different characters at one or more index
+positions, let
+be the smallest such index; then the string
+whose character at position
+has the smaller value, as
+determined by using the
+operator, lexicographically precedes the
+other string. In this case,
+returns the
+difference of the two character values at position
+the two string -- that is, the value:
+this.charAt(k)-anotherString.charAt(k)
+If there is no index position at which they differ, then the shorter
+string lexicographically precedes the longer string. In this case,
+returns the difference of the lengths of the
+strings -- that is, the value:
+this.length()-anotherString.length()
+For finer-grained String comparison, refer to
+Specified by:
+in interface
+Parameters:
+anotherString
+to be compared.
+if the argument string is equal to
+this string; a value less than
+if this string
+is lexicographically less than the string argument; and a
+value greater than
+if this string is
+lexicographically greater than the string argument.
+compareToIgnoreCase
+compareToIgnoreCase
+Compares two strings lexicographically, ignoring case
+differences. This method returns an integer whose sign is that of
+with case folded versions of the strings
+where case differences have been eliminated by calling
+Character.toLowerCase(Character.toUpperCase(int))
+each Unicode code point.
+Note that this method does
+take locale into account,
+and will result in an unsatisfactory ordering for certain locales.
+class provides locale-sensitive comparison.
+Parameters:
+to be compared.
+a negative integer, zero, or a positive integer as the
+specified String is greater than, equal to, or less
+than this String, ignoring case considerations.
+codePoints()
+regionMatches
+regionMatches
+(int toffset,
+int ooffset,
+Tests if two string regions are equal.
+A substring of this
+object is compared to a substring
+of the argument other. The result is true if these substrings
+represent identical character sequences. The substring of this
+object to be compared begins at index
+and has length
+. The substring of other to be compared
+begins at index
+and has length
+if and only if at least one of the following
+is negative.
+is negative.
+toffset+len
+is greater than the length of this
+ooffset+len
+is greater than the length of the other
+There is some nonnegative integer
+this.charAt(toffset +
+) != other.charAt(ooffset +
+Note that this method does
+take locale into account.  The
+class provides locale-sensitive comparison.
+Parameters:
+- the starting offset of the subregion in this string.
+- the string argument.
+- the starting offset of the subregion in the string
+- the number of characters to compare.
+if the specified subregion of this string
+exactly matches the specified subregion of the string argument;
+regionMatches
+regionMatches
+(boolean ignoreCase,
+int toffset,
+int ooffset,
+Tests if two string regions are equal.
+A substring of this
+object is compared to a substring
+of the argument
+. The result is
+substrings represent Unicode code point sequences that are the same,
+ignoring case if and only if
+The sequences
+are compared,
+is the sequence produced as if by calling
+this.substring(toffset, toffset + len).codePoints()
+is the sequence produced as if by calling
+other.substring(ooffset, ooffset + len).codePoints()
+The result is
+if and only if all of the following
+is non-negative.
+is non-negative.
+toffset+len
+is less than or equal to the length of this
+ooffset+len
+is less than or equal to the length of the other
+, all pairs of corresponding Unicode
+code points are equal integer values; or if
+Character.toLowerCase(
+Character.toUpperCase(int)
+on all pairs of Unicode code points
+results in equal integer values.
+Note that this method does
+take locale into account,
+and will result in unsatisfactory results for certain locales when
+provides locale-sensitive comparison.
+Parameters:
+, ignore case when comparing
+characters.
+- the starting offset of the subregion in this
+- the string argument.
+- the starting offset of the subregion in the string
+- the number of characters (Unicode code units -
+value) to compare.
+if the specified subregion of this string
+matches the specified subregion of the string argument;
+otherwise. Whether the matching is exact
+or case insensitive depends on the
+codePoints()
+int toffset)
+Tests if the substring of this string beginning at the
+specified index starts with the specified prefix.
+Parameters:
+- the prefix.
+- where to begin looking in this string.
+if the character sequence represented by the
+argument is a prefix of the substring of this object starting
+The result is
+negative or greater than the length of this
+object; otherwise the result is the same
+as the result of the expression
+this.substring(toffset).startsWith(prefix)
+Tests if this string starts with the specified prefix.
+Parameters:
+- the prefix.
+if the character sequence represented by the
+argument is a prefix of the character sequence represented by
+this string;
+Note also that
+will be returned if the
+argument is an empty string or is equal to this
+object as determined by the
+equals(Object)
+Tests if this string ends with the specified suffix.
+Parameters:
+- the suffix.
+if the character sequence represented by the
+argument is a suffix of the character sequence represented by
+this object;
+otherwise. Note that the
+result will be
+if the argument is the
+empty string or is equal to this
+as determined by the
+equals(Object)
+Returns a hash code for this string. The hash code for a
+object is computed as
+s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+arithmetic, where
+th character of the string,
+is the length of
+the string, and
+indicates exponentiation.
+(The hash value of the empty string is zero.)
+a hash code value for this object.
+Object.equals(java.lang.Object)
+System.identityHashCode(java.lang.Object)
+Returns the index within this string of the first occurrence of
+the specified character. If a character with value
+occurs in the character sequence represented by
+object, then the index (in Unicode
+code units) of the first such occurrence is returned. For
+in the range from 0 to 0xFFFF
+(inclusive), this is the smallest value
+this.charAt(
+is true. For other values of
+, it is the
+smallest value
+this.codePointAt(
+is true. In either case, if no such character occurs in this
+string, then
+is returned.
+Parameters:
+- a character (Unicode code point).
+the index of the first occurrence of the character in the
+character sequence represented by this object, or
+if the character does not occur.
+int fromIndex)
+Returns the index within this string of the first occurrence of the
+specified character, starting the search at the specified index.
+If a character with value
+occurs in the
+character sequence represented by this
+object at an index no smaller than
+the index of the first such occurrence is returned. For values
+in the range from 0 to 0xFFFF (inclusive),
+this is the smallest value
+(this.charAt(
+>= fromIndex)
+is true. For other values of
+, it is the
+smallest value
+(this.codePointAt(
+>= fromIndex)
+is true. In either case, if no such character occurs in this
+string at or after position
+is returned.
+There is no restriction on the value of
+is negative, it has the same effect as if it were zero: this entire
+string may be searched. If it is greater than the length of this
+string, it has the same effect as if it were equal to the length of
+this string:
+is returned.
+All indices are specified in
+(Unicode code units).
+Parameters:
+- a character (Unicode code point).
+- the index to start the search from.
+the index of the first occurrence of the character in the
+character sequence represented by this object that is greater
+than or equal to
+if the character does not occur.
+lastIndexOf
+lastIndexOf
+Returns the index within this string of the last occurrence of
+the specified character. For values of
+range from 0 to 0xFFFF (inclusive), the index (in Unicode code
+units) returned is the largest value
+this.charAt(
+is true. For other values of
+, it is the
+largest value
+this.codePointAt(
+is true.  In either case, if no such character occurs in this
+string, then
+is returned.  The
+is searched backwards starting at the last
+Parameters:
+- a character (Unicode code point).
+the index of the last occurrence of the character in the
+character sequence represented by this object, or
+if the character does not occur.
+lastIndexOf
+lastIndexOf
+int fromIndex)
+Returns the index within this string of the last occurrence of
+the specified character, searching backward starting at the
+specified index. For values of
+in the range
+from 0 to 0xFFFF (inclusive), the index returned is the largest
+(this.charAt(
+<= fromIndex)
+is true. For other values of
+, it is the
+largest value
+(this.codePointAt(
+<= fromIndex)
+is true. In either case, if no such character occurs in this
+string at or before position
+is returned.
+All indices are specified in
+(Unicode code units).
+Parameters:
+- a character (Unicode code point).
+- the index to start the search from. There is no
+restriction on the value of
+greater than or equal to the length of this string, it has
+the same effect as if it were equal to one less than the
+length of this string: this entire string may be searched.
+If it is negative, it has the same effect as if it were -1:
+-1 is returned.
+the index of the last occurrence of the character in the
+character sequence represented by this object that is less
+than or equal to
+if the character does not occur before that point.
+Returns the index within this string of the first occurrence of the
+specified substring.
+The returned index is the smallest value
+this.startsWith(str, k)
+If no such value of
+exists, then
+is returned.
+Parameters:
+- the substring to search for.
+the index of the first occurrence of the specified substring,
+if there is no such occurrence.
+int fromIndex)
+Returns the index within this string of the first occurrence of the
+specified substring, starting at the specified index.
+The returned index is the smallest value
+k >= Math.min(fromIndex, this.length()) &&
+this.startsWith(str, k)
+If no such value of
+exists, then
+is returned.
+Parameters:
+- the substring to search for.
+- the index from which to start the search.
+the index of the first occurrence of the specified substring,
+starting at the specified index,
+if there is no such occurrence.
+lastIndexOf
+lastIndexOf
+Returns the index within this string of the last occurrence of the
+specified substring.  The last occurrence of the empty string ""
+is considered to occur at the index value
+this.length()
+The returned index is the largest value
+this.startsWith(str, k)
+If no such value of
+exists, then
+is returned.
+Parameters:
+- the substring to search for.
+the index of the last occurrence of the specified substring,
+if there is no such occurrence.
+lastIndexOf
+lastIndexOf
+int fromIndex)
+Returns the index within this string of the last occurrence of the
+specified substring, searching backward starting at the specified index.
+The returned index is the largest value
+k <= Math.min(fromIndex, this.length()) &&
+this.startsWith(str, k)
+If no such value of
+exists, then
+is returned.
+Parameters:
+- the substring to search for.
+- the index to start the search from.
+the index of the last occurrence of the specified substring,
+searching backward from the specified index,
+if there is no such occurrence.
+(int beginIndex)
+Returns a string that is a substring of this string. The
+substring begins with the character at the specified index and
+extends to the end of this string.
+"unhappy".substring(2) returns "happy"
+"Harbison".substring(3) returns "bison"
+"emptiness".substring(9) returns "" (an empty string)
+Parameters:
+- the beginning index, inclusive.
+the specified substring.
+IndexOutOfBoundsException
+is negative or larger than the
+length of this
+(int beginIndex,
+int endIndex)
+Returns a string that is a substring of this string. The
+substring begins at the specified
+extends to the character at index
+endIndex - 1
+Thus the length of the substring is
+endIndex-beginIndex
+"hamburger".substring(4, 8) returns "urge"
+"smiles".substring(1, 5) returns "mile"
+Parameters:
+- the beginning index, inclusive.
+- the ending index, exclusive.
+the specified substring.
+IndexOutOfBoundsException
+is negative, or
+is larger than the length of
+is larger than
+subSequence
+CharSequence
+subSequence
+(int beginIndex,
+int endIndex)
+Returns a character sequence that is a subsequence of this sequence.
+An invocation of this method of the form
+str.subSequence(begin, end)
+behaves in exactly the same way as the invocation
+str.substring(begin, end)
+Specified by:
+subSequence
+in interface
+CharSequence
+This method is defined so that the
+class can implement
+CharSequence
+Parameters:
+- the begin index, inclusive.
+- the end index, exclusive.
+the specified subsequence.
+IndexOutOfBoundsException
+is negative,
+is greater than
+is greater than
+Concatenates the specified string to the end of this string.
+If the length of the argument string is
+, then this
+object is returned. Otherwise, a
+object is returned that represents a character
+sequence that is the concatenation of the character sequence
+represented by this
+object and the character
+sequence represented by the argument string.
+"cares".concat("s") returns "caress"
+"to".concat("get").concat("her") returns "together"
+Parameters:
+that is concatenated to the end
+a string that represents the concatenation of this object's
+characters followed by the string argument's characters.
+(char oldChar,
+char newChar)
+Returns a string resulting from replacing all occurrences of
+in this string with
+If the character
+does not occur in the
+character sequence represented by this
+then a reference to this
+object is returned.
+Otherwise, a
+object is returned that
+represents a character sequence identical to the character sequence
+represented by this
+object, except that every
+occurrence of
+is replaced by an occurrence
+"mesquite in your cellar".replace('e', 'o')
+returns "mosquito in your collar"
+"the war of baronets".replace('r', 'y')
+returns "the way of bayonets"
+"sparring with a purple porpoise".replace('p', 't')
+returns "starring with a turtle tortoise"
+"JonL".replace('q', 'x') returns "JonL" (no change)
+Parameters:
+- the old character.
+- the new character.
+a string derived from this string by replacing every
+occurrence of
+Tells whether or not this string matches the given
+regular expression
+An invocation of this method of the form
+yields exactly the
+same result as the expression
+Parameters:
+- the regular expression to which this string is to be matched
+if, and only if, this string matches the
+given regular expression
+PatternSyntaxException
+- if the regular expression's syntax is invalid
+CharSequence
+Returns true if and only if this string contains the specified
+sequence of char values.
+Parameters:
+- the sequence to search for
+true if this string contains
+, false otherwise
+replaceFirst
+replaceFirst
+replacement)
+Replaces the first substring of this string that matches the given
+regular expression
+given replacement.
+An invocation of this method of the form
+.replaceFirst(
+yields exactly the same result as the expression
+replaceFirst
+Note that backslashes (
+) and dollar signs (
+replacement string may cause the results to be different than if it were
+being treated as a literal replacement string; see
+Matcher.replaceFirst(java.lang.String)
+Matcher.quoteReplacement(java.lang.String)
+to suppress the special
+meaning of these characters, if desired.
+Parameters:
+- the regular expression to which this string is to be matched
+replacement
+- the string to be substituted for the first match
+The resulting
+PatternSyntaxException
+- if the regular expression's syntax is invalid
+replacement)
+Replaces each substring of this string that matches the given
+regular expression
+given replacement.
+An invocation of this method of the form
+.replaceAll(
+yields exactly the same result as the expression
+Note that backslashes (
+) and dollar signs (
+replacement string may cause the results to be different than if it were
+being treated as a literal replacement string; see
+Matcher.replaceAll
+Matcher.quoteReplacement(java.lang.String)
+to suppress the special
+meaning of these characters, if desired.
+Parameters:
+- the regular expression to which this string is to be matched
+replacement
+- the string to be substituted for each match
+The resulting
+PatternSyntaxException
+- if the regular expression's syntax is invalid
+CharSequence
+CharSequence
+replacement)
+Replaces each substring of this string that matches the literal target
+sequence with the specified literal replacement sequence. The
+replacement proceeds from the beginning of the string to the end, for
+example, replacing "aa" with "b" in the string "aaa" will result in
+"ba" rather than "ab".
+Parameters:
+- The sequence of char values to be replaced
+replacement
+- The replacement sequence of char values
+The resulting string
+Splits this string around matches of the given
+regular expression
+The array returned by this method contains each substring of this
+string that is terminated by another substring that matches the given
+expression or is terminated by the end of the string.  The substrings in
+the array are in the order in which they occur in this string.  If the
+expression does not match any part of the input then the resulting array
+has just one element, namely this string.
+When there is a positive-width match at the beginning of this
+string then an empty leading substring is included at the beginning
+of the resulting array. A zero-width match at the beginning however
+never produces such empty leading substring.
+parameter controls the number of times the
+pattern is applied and therefore affects the length of the resulting
+is positive then the pattern will be applied
+- 1 times, the array's length will be
+no greater than
+, and the array's last entry will contain
+all input beyond the last matched delimiter.
+is zero then the pattern will be applied as
+many times as possible, the array can have any length, and trailing
+empty strings will be discarded.
+is negative then the pattern will be applied
+as many times as possible and the array can have any length.
+"boo:and:foo"
+, for example, yields the
+following results with these parameters:
+Split example showing regex, limit, and result
+{ "boo", "and:foo" }
+{ "boo", "and", "foo" }
+{ "boo", "and", "foo" }
+{ "b", "", ":and:f", "", "" }
+{ "b", "", ":and:f", "", "" }
+{ "b", "", ":and:f" }
+An invocation of this method of the form
+yields the same result as the expression
+Parameters:
+- the delimiting regular expression
+- the result threshold, as described above
+the array of strings computed by splitting this string
+around matches of the given regular expression
+PatternSyntaxException
+- if the regular expression's syntax is invalid
+Splits this string around matches of the given
+regular expression
+This method works as if by invoking the two-argument
+method with the given expression and a limit
+argument of zero.  Trailing empty strings are therefore not included in
+the resulting array.
+"boo:and:foo"
+, for example, yields the following
+results with these expressions:
+Split examples showing regex and result
+{ "boo", "and", "foo" }
+{ "b", "", ":and:f" }
+Parameters:
+- the delimiting regular expression
+the array of strings computed by splitting this string
+around matches of the given regular expression
+PatternSyntaxException
+- if the regular expression's syntax is invalid
+public static
+CharSequence
+CharSequence
+... elements)
+Returns a new String composed of copies of the
+CharSequence elements
+joined together with a copy of
+the specified
+For example,
+String message = String.join("-", "Java", "is", "cool");
+// message returned is: "Java-is-cool"
+Note that if an element is null, then
+Parameters:
+- the delimiter that separates each element
+- the elements to join together.
+that is composed of the
+separated by the
+NullPointerException
+StringJoiner
+public static
+CharSequence
+CharSequence
+> elements)
+Returns a new
+composed of copies of the
+CharSequence elements
+joined together with a copy of the
+For example,
+List<String> strings = List.of("Java", "is", "cool");
+String message = String.join(" ", strings);
+// message returned is: "Java is cool"
+Set<String> strings =
+new LinkedHashSet<>(List.of("Java", "is", "very", "cool"));
+String message = String.join("-", strings);
+// message returned is: "Java-is-very-cool"
+Note that if an individual element is
+Parameters:
+- a sequence of characters that is used to separate each
+in the resulting
+that will have its
+joined together.
+that is composed from the
+NullPointerException
+join(CharSequence,CharSequence...)
+StringJoiner
+toLowerCase
+toLowerCase
+Converts all of the characters in this
+case using the rules of the given
+.  Case mapping is based
+on the Unicode Standard version specified by the
+class. Since case mappings are not always 1:1 char mappings, the resulting
+may be a different length than the original
+Examples of lowercase  mappings are in the following table:
+Lowercase mapping examples showing language code of locale, upper case, lower case, and description
+Language Code of Locale
+Description
+tr (Turkish)
+capital letter I with dot above -> small letter i
+tr (Turkish)
+capital letter I -> small letter dotless i
+French Fries
+french fries
+lowercased all chars in String
+lowercased all chars in String
+Parameters:
+- use the case transformation rules for this locale
+, converted to lowercase.
+toLowerCase()
+toUpperCase()
+toUpperCase(Locale)
+toLowerCase
+toLowerCase
+Converts all of the characters in this
+case using the rules of the default locale. This is equivalent to calling
+toLowerCase(Locale.getDefault())
+This method is locale sensitive, and may produce unexpected
+results if used for strings that are intended to be interpreted locale
+independently.
+Examples are programming language identifiers, protocol keys, and HTML
+For instance,
+"TITLE".toLowerCase()
+in a Turkish locale
+"t\u0131tle"
+, where '\u0131' is the
+LATIN SMALL LETTER DOTLESS I character.
+To obtain correct results for locale insensitive strings, use
+toLowerCase(Locale.ROOT)
+, converted to lowercase.
+toLowerCase(Locale)
+toUpperCase
+toUpperCase
+Converts all of the characters in this
+case using the rules of the given
+. Case mapping is based
+on the Unicode Standard version specified by the
+class. Since case mappings are not always 1:1 char mappings, the resulting
+may be a different length than the original
+Examples of locale-sensitive and 1:M case mappings are in the following table.
+Examples of locale-sensitive and 1:M case mappings. Shows Language code of locale, lower case, upper case, and description.
+Language Code of Locale
+Description
+tr (Turkish)
+small letter i -> capital letter I with dot above
+tr (Turkish)
+small letter dotless i -> capital letter I
+\u0053 \u0053
+small letter sharp s -> two letters: SS
+Fahrvergnügen
+FAHRVERGNÜGEN
+Parameters:
+- use the case transformation rules for this locale
+, converted to uppercase.
+toUpperCase()
+toLowerCase()
+toLowerCase(Locale)
+toUpperCase
+toUpperCase
+Converts all of the characters in this
+case using the rules of the default locale. This method is equivalent to
+toUpperCase(Locale.getDefault())
+This method is locale sensitive, and may produce unexpected
+results if used for strings that are intended to be interpreted locale
+independently.
+Examples are programming language identifiers, protocol keys, and HTML
+For instance,
+"title".toUpperCase()
+in a Turkish locale
+"T\u0130TLE"
+, where '\u0130' is the
+LATIN CAPITAL LETTER I WITH DOT ABOVE character.
+To obtain correct results for locale insensitive strings, use
+toUpperCase(Locale.ROOT)
+, converted to uppercase.
+toUpperCase(Locale)
+Returns a string whose value is this string, with all leading
+and trailing space removed, where space is defined
+as any character whose codepoint is less than or equal to
+(the space character).
+object represents an empty character
+sequence, or the first and last characters of character sequence
+represented by this
+object both have codes
+that are not space (as defined above), then a
+reference to this
+object is returned.
+Otherwise, if all characters in this string are space (as
+defined above), then a
+object representing an
+empty string is returned.
+Otherwise, let
+be the index of the first character in the
+string whose code is not a space (as defined above) and let
+be the index of the last character in the string whose code
+is not a space (as defined above). A
+object is returned, representing the substring of this string that
+begins with the character at index
+and ends with the
+character at index
+-that is, the result of
+this.substring(k, m + 1)
+This method may be used to trim space (as defined above) from
+the beginning and end of a string.
+a string whose value is this string, with all leading
+and trailing space removed, or this string if it
+has no leading or trailing space.
+Returns a string whose value is this string, with all leading
+and trailing
+white space
+object represents an empty string,
+or if all code points in this string are
+white space
+, then an empty string
+is returned.
+Otherwise, returns a substring of this string beginning with the first
+code point that is not a
+white space
+up to and including the last code point that is not a
+white space
+This method may be used to strip
+white space
+the beginning and end of a string.
+a string whose value is this string, with all leading
+and trailing white space removed
+Character.isWhitespace(int)
+stripLeading
+stripLeading
+Returns a string whose value is this string, with all leading
+white space
+object represents an empty string,
+or if all code points in this string are
+white space
+, then an empty string
+is returned.
+Otherwise, returns a substring of this string beginning with the first
+code point that is not a
+white space
+up to and including the last code point of this string.
+This method may be used to trim
+white space
+the beginning of a string.
+a string whose value is this string, with all leading white
+space removed
+Character.isWhitespace(int)
+stripTrailing
+stripTrailing
+Returns a string whose value is this string, with all trailing
+white space
+object represents an empty string,
+or if all characters in this string are
+white space
+, then an empty string
+is returned.
+Otherwise, returns a substring of this string beginning with the first
+code point of this string up to and including the last code point
+that is not a
+white space
+This method may be used to trim
+white space
+the end of a string.
+a string whose value is this string, with all trailing white
+space removed
+Character.isWhitespace(int)
+if the string is empty or contains only
+white space
+codepoints,
+if the string is empty or contains only
+white space
+codepoints,
+Character.isWhitespace(int)
+Returns a stream of lines extracted from this string,
+separated by line terminators.
+line terminator
+is one of the following:
+a line feed character
+a carriage return character
+or a carriage return followed immediately by a line feed
+(U+000D U+000A).
+is either a sequence of zero or more characters
+followed by a line terminator, or it is a sequence of one or
+more characters followed by the end of the string. A
+line does not include the line terminator.
+The stream returned by this method contains the lines from
+this string in the order in which they occur.
+This definition of
+implies that an empty
+string has zero lines and that there is no empty line
+following a line terminator at the end of a string.
+Implementation Note:
+This method provides better performance than
+split("\R") by supplying elements lazily and
+by faster search of new line terminators.
+the stream of lines extracted from this string
+Adjusts the indentation of each line of this string based on the value of
+, and normalizes line termination characters.
+This string is conceptually separated into lines using
+. Each line is then adjusted as described below
+and then suffixed with a line feed
+(U+000A). The resulting
+lines are then concatenated and returned.
+spaces (U+0020) are inserted at the
+beginning of each line.
+white space characters
+are removed
+from the beginning of each line. If a given line does not contain
+sufficient white space then all leading
+white space characters
+are removed.
+Each white space character is treated as a single character. In
+particular, the tab character
+(U+0009) is considered a
+single character; it is not expanded.
+then the line remains unchanged. However, line
+terminators are still normalized.
+Parameters:
+- number of leading
+white space characters
+to add or remove
+string with indentation adjusted and line endings normalized
+Character.isWhitespace(int)
+stripIndent
+stripIndent
+Returns a string whose value is this string, with incidental
+white space
+removed from
+the beginning and end of every line.
+white space
+is often present in a text block to align the content with the opening
+delimiter. For example, in the following code, dots represent incidental
+white space
+String html = """
+..............<html>
+..............    <body>
+..............        <p>Hello, world</p>
+..............    </body>
+..............</html>
+..............""";
+This method treats the incidental
+white space
+as indentation to be
+stripped, producing a string that preserves the relative indentation of
+the content. Using | to visualize the start of each line of the string:
+|    <body>
+|        <p>Hello, world</p>
+|    </body>
+First, the individual lines of this string are extracted. A
+is a sequence of zero or more characters followed by either a line
+terminator or the end of the string.
+If the string has at least one line terminator, the last line consists
+of the characters between the last terminator and the end of the string.
+Otherwise, if the string has no terminators, the last line is the start
+of the string to the end of the string, in other words, the entire
+A line does not include the line terminator.
+minimum indentation
+(min) is determined as follows:
+For each non-blank line (as defined by
+the leading
+white space
+characters are counted.
+The leading
+white space
+characters on the last line are also counted even if
+value is the smallest of these counts.
+white space
+characters are
+removed, and any trailing
+characters are removed.
+are replaced with the empty string.
+Finally, the lines are joined into a new string, using the LF character
+(U+000A) to separate lines.
+This method's primary purpose is to shift a block of lines as far as
+possible to the left, while preserving relative indentation. Lines
+that were indented the least will thus have no leading
+white space
+The result will have the same number of line terminators as this string.
+If this string ends with a line terminator then the result will end
+with a line terminator.
+Implementation Requirements:
+This method treats all
+white space
+characters as having equal width. As long as the indentation on every
+line is consistently composed of the same character sequences, then the
+result will be as described above.
+string with incidental indentation removed and line
+terminators normalized
+indent(int)
+Character.isWhitespace(int)
+translateEscapes
+translateEscapes
+Returns a string whose value is this string, with escape sequences
+translated as if in a string literal.
+Escape sequences are translated as follows;
+Translation
+Translation
+horizontal tab
+carriage return
+double quote
+single quote
+octal escape
+code point equivalents
+\<line-terminator>
+continuation
+Implementation Note:
+This method does
+translate Unicode escapes such as "
+Unicode escapes are translated by the Java compiler when reading input characters and
+are not part of the string literal specification.
+String with escape sequences translated.
+IllegalArgumentException
+- when an escape sequence is malformed.
+Java Language Specification
+3.10.7 Escape Sequences
+? extends R> f)
+This method allows the application of a function to
+string. The function should expect a single String argument
+and produce an
+Any exception thrown by
+will be propagated to the
+Type Parameters:
+- the type of the result
+Parameters:
+- a function to apply
+the result of applying the function to this string
+This object (which is already a string!) is itself returned.
+Specified by:
+in interface
+CharSequence
+the string itself.
+Returns a stream of
+zero-extending the
+from this sequence.  Any char which maps to a
+surrogate code
+is passed through uninterpreted.
+Specified by:
+in interface
+CharSequence
+an IntStream of char values from this sequence
+Returns a stream of code point values from this sequence.  Any surrogate
+pairs encountered in the sequence are combined as if by
+Character.toCodePoint
+and the result is passed
+to the stream. Any other code units, including ordinary BMP characters,
+unpaired surrogates, and undefined code units, are zero-extended to
+values which are then passed to the stream.
+Specified by:
+in interface
+CharSequence
+an IntStream of Unicode code points from this sequence
+toCharArray
+toCharArray
+Converts this string to a new character array.
+a newly allocated character array whose length is the length
+of this string and whose contents are initialized to contain
+the character sequence represented by this string.
+public static
+Returns a formatted string using the specified format string and
+The locale always used is the one returned by
+Locale.getDefault(Locale.Category)
+category specified.
+Parameters:
+format string
+- Arguments referenced by the format specifiers in the format
+string.  If there are more arguments than format specifiers, the
+extra arguments are ignored.  The number of arguments is
+variable and may be zero.  The maximum number of arguments is
+limited by the maximum dimension of a Java array as defined by
+The Java Virtual Machine Specification
+The behaviour on a
+argument depends on the
+A formatted string
+IllegalFormatException
+- If a format string contains an illegal syntax, a format
+specifier that is incompatible with the given arguments,
+insufficient arguments given the format string, or other
+illegal conditions.  For specification of all possible
+formatting errors, see the
+section of the
+formatter class specification.
+public static
+Returns a formatted string using the specified locale, format string,
+and arguments.
+Parameters:
+to apply during
+formatting.  If
+then no localization
+is applied.
+format string
+- Arguments referenced by the format specifiers in the format
+string.  If there are more arguments than format specifiers, the
+extra arguments are ignored.  The number of arguments is
+variable and may be zero.  The maximum number of arguments is
+limited by the maximum dimension of a Java array as defined by
+The Java Virtual Machine Specification
+The behaviour on a
+argument depends on the
+A formatted string
+IllegalFormatException
+- If a format string contains an illegal syntax, a format
+specifier that is incompatible with the given arguments,
+insufficient arguments given the format string, or other
+illegal conditions.  For specification of all possible
+formatting errors, see the
+section of the
+formatter class specification
+Formats using this string as the format string, and the supplied
+Implementation Requirements:
+This method is equivalent to
+String.format(this, args)
+Parameters:
+- Arguments referenced by the format specifiers in this string.
+A formatted string
+format(String,Object...)
+public static
+Returns the string representation of the
+Parameters:
+if the argument is
+, then a string equal to
+; otherwise, the value of
+obj.toString()
+is returned.
+Object.toString()
+public static
+(char[] data)
+Returns the string representation of the
+argument. The contents of the character array are copied; subsequent
+modification of the character array does not affect the returned
+Parameters:
+- the character array.
+that contains the characters of the
+character array.
+public static
+(char[] data,
+int offset,
+Returns the string representation of a specific subarray of the
+array argument.
+argument is the index of the first
+character of the subarray. The
+specifies the length of the subarray. The contents of the subarray
+are copied; subsequent modification of the character array does not
+affect the returned string.
+Parameters:
+- the character array.
+- initial offset of the subarray.
+- length of the subarray.
+that contains the characters of the
+specified subarray of the character array.
+IndexOutOfBoundsException
+negative, or
+is negative, or
+offset+count
+is larger than
+data.length
+copyValueOf
+public static
+copyValueOf
+(char[] data,
+int offset,
+Equivalent to
+valueOf(char[], int, int)
+Parameters:
+- the character array.
+- initial offset of the subarray.
+- length of the subarray.
+that contains the characters of the
+specified subarray of the character array.
+IndexOutOfBoundsException
+negative, or
+is negative, or
+offset+count
+is larger than
+data.length
+copyValueOf
+public static
+copyValueOf
+(char[] data)
+Equivalent to
+valueOf(char[])
+Parameters:
+- the character array.
+that contains the characters of the
+character array.
+public static
+(boolean b)
+Returns the string representation of the
+Parameters:
+if the argument is
+, a string equal to
+is returned; otherwise, a string equal to
+is returned.
+public static
+Returns the string representation of the
+Parameters:
+a string of length
+as its single character the argument
+public static
+Returns the string representation of the
+The representation is exactly the one returned by the
+Integer.toString
+method of one argument.
+Parameters:
+a string representation of the
+Integer.toString(int, int)
+public static
+Returns the string representation of the
+The representation is exactly the one returned by the
+Long.toString
+method of one argument.
+Parameters:
+a string representation of the
+Long.toString(long)
+public static
+Returns the string representation of the
+The representation is exactly the one returned by the
+Float.toString
+method of one argument.
+Parameters:
+a string representation of the
+Float.toString(float)
+public static
+Returns the string representation of the
+The representation is exactly the one returned by the
+Double.toString
+method of one argument.
+Parameters:
+a  string representation of the
+Double.toString(double)
+Returns a canonical representation for the string object.
+A pool of strings, initially empty, is maintained privately by the
+When the intern method is invoked, if the pool already contains a
+string equal to this
+object as determined by
+equals(Object)
+method, then the string from the pool is
+returned. Otherwise, this
+object is added to the
+pool and a reference to this
+object is returned.
+It follows that for any two strings
+s.intern() == t.intern()
+if and only if
+s.equals(t)
+All literal strings and string-valued constant expressions are
+interned. String literals are defined in section
+The Java Language Specification
+a string that has the same contents as this string, but is
+guaranteed to be from a pool of unique strings.
+(int count)
+Returns a string whose value is the concatenation of this
+string repeated
+If this string is empty or count is zero then the empty
+string is returned.
+Parameters:
+- number of times to repeat
+A string composed of this string repeated
+times or the empty string if this
+string is empty or count is zero
+IllegalArgumentException
+describeConstable
+describeConstable
+containing the nominal descriptor for this
+instance, which is the instance itself.
+Specified by:
+describeConstable
+in interface
+describing the
+resolveConstantDesc
+resolveConstantDesc
+MethodHandles.Lookup
+Resolves this instance as a
+ConstantDesc
+, the result of which is
+the instance itself.
+Specified by:
+resolveConstantDesc
+in interface
+ConstantDesc
+Parameters:
+Class Object
+java.lang.Object
+public class
+is the root of the class hierarchy.
+Every class has
+as a superclass. All objects,
+including arrays, implement the methods of this class.
+Constructor Summary
+Constructors
+Constructor
+Description
+Constructs a new object.
+Method Summary
+All Methods
+Instance Methods
+Concrete Methods
+Deprecated Methods
+Modifier and Type
+Description
+Creates and returns a copy of this object.
+Indicates whether some other object is "equal to" this one.
+protected void
+Deprecated.
+The finalization mechanism is inherently problematic.
+Returns the runtime class of this
+Returns a hash code value for the object.
+Wakes up a single thread that is waiting on this object's
+Wakes up all threads that are waiting on this object's monitor.
+Returns a string representation of the object.
+Causes the current thread to wait until it is awakened, typically
+interrupted
+(long timeoutMillis)
+Causes the current thread to wait until it is awakened, typically
+interrupted
+, or until a
+certain amount of real time has elapsed.
+(long timeoutMillis,
+Causes the current thread to wait until it is awakened, typically
+interrupted
+, or until a
+certain amount of real time has elapsed.
+Constructor Details
+Constructs a new object.
+Method Details
+public final
+Returns the runtime class of this
+. The returned
+object is the object that is locked by
+static synchronized
+methods of the represented class.
+The actual result type is
+Class<? extends |X|>
+is the erasure of the static type of the
+expression on which
+example, no cast is required in this code fragment:
+Number n = 0;
+Class<? extends Number> c = n.getClass();
+object that represents the runtime
+class of this object.
+Java Language Specification
+15.8.2 Class Literals
+Returns a hash code value for the object. This method is
+supported for the benefit of hash tables such as those provided by
+The general contract of
+Whenever it is invoked on the same object more than once during
+an execution of a Java application, the
+must consistently return the same integer, provided no information
+comparisons on the object is modified.
+This integer need not remain consistent from one execution of an
+application to another execution of the same application.
+If two objects are equal according to the
+method, then calling the
+method on each of the two objects must produce the
+same integer result.
+required that if two objects are unequal
+according to the
+method, then
+calling the
+method on each of the two objects
+must produce distinct integer results.  However, the programmer
+should be aware that producing distinct integer results for
+unequal objects may improve the performance of hash tables.
+Implementation Requirements:
+As far as is reasonably practical, the
+method defined
+returns distinct integers for distinct objects.
+a hash code value for this object.
+equals(java.lang.Object)
+System.identityHashCode(java.lang.Object)
+Indicates whether some other object is "equal to" this one.
+method implements an equivalence relation
+on non-null object references:
+: for any non-null reference value
+x.equals(x)
+should return
+: for any non-null reference values
+x.equals(y)
+should return
+if and only if
+y.equals(x)
+: for any non-null reference values
+x.equals(y)
+y.equals(z)
+x.equals(z)
+should return
+: for any non-null reference values
+, multiple invocations of
+x.equals(y)
+consistently return
+or consistently return
+, provided no
+information used in
+comparisons on the
+objects is modified.
+For any non-null reference value
+x.equals(null)
+should return
+An equivalence relation partitions the elements it operates on
+equivalence classes
+; all the members of an
+equivalence class are equal to each other. Members of an
+equivalence class are substitutable for each other, at least
+for some purposes.
+It is generally necessary to override the
+method whenever this method is overridden, so as to maintain the
+general contract for the
+method, which states
+that equal objects must have equal hash codes.
+Implementation Requirements:
+method for class
+the most discriminating possible equivalence relation on objects;
+that is, for any non-null reference values
+, this method returns
+if and only
+refer to the same object
+has the value
+In other words, under the reference equality equivalence
+relation, each equivalence class only has a single element.
+Parameters:
+- the reference object with which to compare.
+if this object is the same as the obj
+CloneNotSupportedException
+Creates and returns a copy of this object.  The precise meaning
+of "copy" may depend on the class of the object. The general
+intent is that, for any object
+, the expression:
+x.clone() != x
+will be true, and that the expression:
+x.clone().getClass() == x.getClass()
+, but these are not absolute requirements.
+While it is typically the case that:
+x.clone().equals(x)
+, this is not an absolute requirement.
+By convention, the returned object should be obtained by calling
+super.clone
+.  If a class and all of its superclasses (except
+) obey this convention, it will be the case that
+x.clone().getClass() == x.getClass()
+By convention, the object returned by this method should be independent
+of this object (which is being cloned).  To achieve this independence,
+it may be necessary to modify one or more fields of the object returned
+super.clone
+before returning it.  Typically, this means
+copying any mutable objects that comprise the internal "deep structure"
+of the object being cloned and replacing the references to these
+objects with references to the copies.  If a class contains only
+primitive fields or references to immutable objects, then it is usually
+the case that no fields in the object returned by
+super.clone
+need to be modified.
+Implementation Requirements:
+specific cloning operation. First, if the class of this object does
+not implement the interface
+CloneNotSupportedException
+is thrown. Note that all arrays
+are considered to implement the interface
+the return type of the
+method of an array type
+where T is any reference or primitive type.
+Otherwise, this method creates a new instance of the class of this
+object and initializes all its fields with exactly the contents of
+the corresponding fields of this object, as if by assignment; the
+contents of the fields are not themselves cloned. Thus, this method
+performs a "shallow copy" of this object, not a "deep copy" operation.
+does not itself implement the interface
+, so calling the
+method on an object
+whose class is
+will result in throwing an
+exception at run time.
+a clone of this instance.
+CloneNotSupportedException
+- if the object's class does not
+support the
+interface. Subclasses
+that override the
+method can also
+throw this exception to indicate that an instance cannot
+Returns a string representation of the object.
+In general, the
+method returns a string that
+"textually represents" this object. The result should
+be a concise but informative representation that is easy for a
+person to read.
+It is recommended that all subclasses override this method.
+The string output is not necessarily stable over time or across
+JVM invocations.
+Implementation Requirements:
+method for class
+returns a string consisting of the name of the class of which the
+object is an instance, the at-sign character `
+the unsigned hexadecimal representation of the hash code of the
+object. In other words, this method returns a string equal to the
+getClass().getName() + '@' + Integer.toHexString(hashCode())
+a string representation of the object.
+public final
+Wakes up a single thread that is waiting on this object's
+monitor. If any threads are waiting on this object, one of them
+is chosen to be awakened. The choice is arbitrary and occurs at
+the discretion of the implementation. A thread waits on an object's
+monitor by calling one of the
+The awakened thread will not be able to proceed until the current
+thread relinquishes the lock on this object. The awakened thread will
+compete in the usual manner with any other threads that might be
+actively competing to synchronize on this object; for example, the
+awakened thread enjoys no reliable privilege or disadvantage in being
+the next thread to lock this object.
+This method should only be called by a thread that is the owner
+of this object's monitor. A thread becomes the owner of the
+object's monitor in one of three ways:
+By executing a synchronized instance method of that object.
+By executing the body of a
+synchronized
+that synchronizes on the object.
+For objects of type
+by executing a
+synchronized static method of that class.
+Only one thread at a time can own an object's monitor.
+IllegalMonitorStateException
+- if the current thread is not
+the owner of this object's monitor.
+notifyAll()
+public final
+Wakes up all threads that are waiting on this object's monitor. A
+thread waits on an object's monitor by calling one of the
+The awakened threads will not be able to proceed until the current
+thread relinquishes the lock on this object. The awakened threads
+will compete in the usual manner with any other threads that might
+be actively competing to synchronize on this object; for example,
+the awakened threads enjoy no reliable privilege or disadvantage in
+being the next thread to lock this object.
+This method should only be called by a thread that is the owner
+of this object's monitor. See the
+method for a
+description of the ways in which a thread can become the owner of
+IllegalMonitorStateException
+- if the current thread is not
+the owner of this object's monitor.
+public final
+InterruptedException
+Causes the current thread to wait until it is awakened, typically
+interrupted
+In all respects, this method behaves as if
+wait(0L, 0)
+had been called. See the specification of the
+wait(long, int)
+for details.
+IllegalMonitorStateException
+- if the current thread is not
+the owner of the object's monitor
+InterruptedException
+- if any thread interrupted the current thread before or
+while the current thread was waiting. The
+interrupted status
+current thread is cleared when this exception is thrown.
+notifyAll()
+wait(long, int)
+public final
+(long timeoutMillis)
+InterruptedException
+Causes the current thread to wait until it is awakened, typically
+interrupted
+, or until a
+certain amount of real time has elapsed.
+In all respects, this method behaves as if
+wait(timeoutMillis, 0)
+had been called. See the specification of the
+wait(long, int)
+for details.
+Parameters:
+timeoutMillis
+- the maximum time to wait, in milliseconds
+IllegalArgumentException
+timeoutMillis
+is negative
+IllegalMonitorStateException
+- if the current thread is not
+the owner of the object's monitor
+InterruptedException
+- if any thread interrupted the current thread before or
+while the current thread was waiting. The
+interrupted status
+current thread is cleared when this exception is thrown.
+notifyAll()
+wait(long, int)
+public final
+(long timeoutMillis,
+InterruptedException
+Causes the current thread to wait until it is awakened, typically
+interrupted
+, or until a
+certain amount of real time has elapsed.
+The current thread must own this object's monitor lock. See the
+method for a description of the ways in which
+a thread can become the owner of a monitor lock.
+This method causes the current thread (referred to here as
+place itself in the wait set for this object and then to relinquish any
+and all synchronization claims on this object. Note that only the locks
+on this object are relinquished; any other objects on which the current
+thread may be synchronized remain locked while the thread waits.
+then becomes disabled for thread scheduling purposes
+and lies dormant until one of the following occurs:
+Some other thread invokes the
+method for this
+object and thread
+happens to be arbitrarily chosen as
+the thread to be awakened.
+Some other thread invokes the
+method for this
+Some other thread
+The specified amount of real time has elapsed, more or less.
+The amount of real time, in nanoseconds, is given by the expression
+1000000 * timeoutMillis + nanos
+timeoutMillis
+are both zero, then real time is not taken into consideration and the
+thread waits until awakened by one of the other causes.
+is awakened spuriously. (See below.)
+is then removed from the wait set for this
+object and re-enabled for thread scheduling. It competes in the
+usual manner with other threads for the right to synchronize on the
+object; once it has regained control of the object, all its
+synchronization claims on the object are restored to the status quo
+ante - that is, to the situation as of the time that the
+method was invoked. Thread
+then returns from the
+invocation of the
+method. Thus, on return from the
+method, the synchronization state of the object and of
+is exactly as it was when the
+was invoked.
+A thread can wake up without being notified, interrupted, or timing out, a
+spurious wakeup
+.  While this will rarely occur in practice,
+applications must guard against it by testing for the condition that should
+have caused the thread to be awakened, and continuing to wait if the condition
+is not satisfied. See the example below.
+For more information on this topic, see section 14.2,
+"Condition Queues," in Brian Goetz and others'
+Java Concurrency
+in Practice
+(Addison-Wesley, 2006) or Item 69 in Joshua
+Effective Java, Second Edition
+(Addison-Wesley,
+If the current thread is
+interrupted
+by any thread before or while it is waiting, then an
+InterruptedException
+is thrown.  The
+interrupted status
+of the current thread is cleared when
+this exception is thrown. This exception is not thrown until the lock status of
+this object has been restored as described above.
+The recommended approach to waiting is to check the condition being awaited in
+loop around the call to
+, as shown in the example
+below. Among other things, this approach avoids problems that can be caused
+by spurious wakeups.
+synchronized (obj) {
+while (<condition does not hold> and <timeout not exceeded>) {
+long timeoutMillis = ... ; // recompute timeout values
+int nanos = ... ;
+obj.wait(timeoutMillis, nanos);
+... // Perform action appropriate to condition or timeout
+Parameters:
+timeoutMillis
+- the maximum time to wait, in milliseconds
+- additional time, in nanoseconds, in the range 0-999999 inclusive
+IllegalArgumentException
+timeoutMillis
+is negative,
+or if the value of
+is out of range
+IllegalMonitorStateException
+- if the current thread is not
+the owner of the object's monitor
+InterruptedException
+- if any thread interrupted the current thread before or
+while the current thread was waiting. The
+interrupted status
+current thread is cleared when this exception is thrown.
+notifyAll()
+@Deprecated
+Deprecated.
+The finalization mechanism is inherently problematic.
+Finalization can lead to performance issues, deadlocks, and hangs.
+Errors in finalizers can lead to resource leaks; there is no way to cancel
+finalization if it is no longer necessary; and no ordering is specified
+among calls to
+methods of different objects.
+Furthermore, there are no guarantees regarding the timing of finalization.
+method might be called on a finalizable object
+only after an indefinite delay, if at all.
+Classes whose instances hold non-heap resources should provide a method
+to enable explicit release of those resources, and they should also
+AutoCloseable
+if appropriate.
+PhantomReference
+provide more flexible and efficient ways to release resources when an object
+becomes unreachable.
+Called by the garbage collector on an object when garbage collection
+determines that there are no more references to the object.
+A subclass overrides the
+method to dispose of
+system resources or to perform other cleanup.
+The general contract of
+is that it is invoked
+if and when the Java virtual
+machine has determined that there is no longer any
+means by which this object can be accessed by any thread that has
+not yet died, except as a result of an action taken by the
+finalization of some other object or class which is ready to be
+finalized. The
+method may take any action, including
+making this object available again to other threads; the usual purpose
+, however, is to perform cleanup actions before
+the object is irrevocably discarded. For example, the finalize method
+for an object that represents an input/output connection might perform
+explicit I/O transactions to break the connection before the object is
+permanently discarded.
+method of class
+performs no
+special action; it simply returns normally. Subclasses of
+may override this definition.
+The Java programming language does not guarantee which thread will
+method for any given object. It is
+guaranteed, however, that the thread that invokes finalize will not
+be holding any user-visible synchronization locks when finalize is
+invoked. If an uncaught exception is thrown by the finalize method,
+the exception is ignored and finalization of that object terminates.
+method has been invoked for an object, no
+further action is taken until the Java virtual machine has again
+determined that there is no longer any means by which this object can
+be accessed by any thread that has not yet died, including possible
+actions by other objects or classes which are ready to be finalized,
+at which point the object may be discarded.
+method is never invoked more than once by a Java
+virtual machine for any given object.
+Any exception thrown by the
+method causes
+the finalization of this object to be halted, but is otherwise
+Classes that embed non-heap resources have many options
+for cleanup of those resources. The class must ensure that the
+lifetime of each instance is longer than that of any resource it embeds.
+Reference.reachabilityFence(java.lang.Object)
+can be used to ensure that
+objects remain reachable while resources embedded in the object are in use.
+A subclass should avoid overriding the
+unless the subclass embeds non-heap resources that must be cleaned up
+before the instance is collected.
+Finalizer invocations are not automatically chained, unlike constructors.
+If a subclass overrides
+it must invoke the superclass
+finalizer explicitly.
+To guard against exceptions prematurely terminating the finalize chain,
+the subclass should use a
+try-finally
+block to ensure
+super.finalize()
+is always invoked. For example,
+protected void finalize() throws Throwable {
+... // cleanup subclass state
+} finally {
+super.finalize();
+raised by this method
+Java Language Specification
+12.6 Finalization of Class Instances
+WeakReference
+PhantomReference
+Class ArrayList<E>
+java.lang.Object
+java.util.AbstractCollection
+java.util.AbstractList
+java.util.ArrayList<E>
+Type Parameters:
+- the type of elements in this list
+All Implemented Interfaces:
+Serializable
+RandomAccess
+Direct Known Subclasses:
+AttributeList
+RoleUnresolvedList
+public class
+ArrayList<E>
+AbstractList
+RandomAccess
+Serializable
+Resizable-array implementation of the
+interface.  Implements
+all optional list operations, and permits all elements, including
+.  In addition to implementing the
+this class provides methods to manipulate the size of the array that is
+used internally to store the list.  (This class is roughly equivalent to
+, except that it is unsynchronized.)
+listIterator
+operations run in constant
+operation runs in
+amortized constant time
+that is, adding n elements requires O(n) time.  All of the other operations
+run in linear time (roughly speaking).  The constant factor is low compared
+to that for the
+implementation.
+instance has a
+.  The capacity is
+the size of the array used to store the elements in the list.  It is always
+at least as large as the list size.  As elements are added to an ArrayList,
+its capacity grows automatically.  The details of the growth policy are not
+specified beyond the fact that adding an element has constant amortized
+An application can increase the capacity of an
+before adding a large number of elements using the
+ensureCapacity
+operation.  This may reduce the amount of incremental reallocation.
+Note that this implementation is not synchronized.
+If multiple threads access an
+instance concurrently,
+and at least one of the threads modifies the list structurally, it
+be synchronized externally.  (A structural modification is
+any operation that adds or deletes one or more elements, or explicitly
+resizes the backing array; merely setting the value of an element is not
+a structural modification.)  This is typically accomplished by
+synchronizing on some object that naturally encapsulates the list.
+If no such object exists, the list should be "wrapped" using the
+Collections.synchronizedList
+method.  This is best done at creation time, to prevent accidental
+unsynchronized access to the list:
+List list = Collections.synchronizedList(new ArrayList(...));
+The iterators returned by this class's
+listIterator
+methods are
+if the list is structurally modified at any time after the iterator is
+created, in any way except through the iterator's own
+methods, the iterator will throw a
+ConcurrentModificationException
+.  Thus, in the face of
+concurrent modification, the iterator fails quickly and cleanly, rather
+than risking arbitrary, non-deterministic behavior at an undetermined
+time in the future.
+Note that the fail-fast behavior of an iterator cannot be guaranteed
+as it is, generally speaking, impossible to make any hard guarantees in the
+presence of unsynchronized concurrent modification.  Fail-fast iterators
+ConcurrentModificationException
+on a best-effort basis.
+Therefore, it would be wrong to write a program that depended on this
+exception for its correctness:
+the fail-fast behavior of iterators
+should be used only to detect bugs.
+This class is a member of the
+Java Collections Framework
+Serialized Form
+Field Summary
+Fields declared in class java.util.
+AbstractList
+Constructor Summary
+Constructors
+Constructor
+Description
+Constructs an empty list with an initial capacity of ten.
+(int initialCapacity)
+Constructs an empty list with the specified initial capacity.
+Constructs a list containing the elements of the specified
+collection, in the order they are returned by the collection's
+Method Summary
+All Methods
+Instance Methods
+Concrete Methods
+Modifier and Type
+Description
+(int index,
+Inserts the specified element at the specified position in this
+Appends the specified element to the end of this list.
+(int index,
+Inserts all of the elements in the specified collection into this
+list, starting at the specified position.
+Appends all of the elements in the specified collection to the end of
+this list, in the order that they are returned by the
+specified collection's Iterator.
+Removes all of the elements from this list.
+Returns a shallow copy of this
+if this list contains the specified element.
+ensureCapacity
+(int minCapacity)
+Increases the capacity of this
+instance, if
+necessary, to ensure that it can hold at least the number of elements
+specified by the minimum capacity argument.
+Compares the specified object with this list for equality.
+Performs the given action for each element of the
+until all elements have been processed or the action throws an
+(int index)
+Returns the element at the specified position in this list.
+Returns the hash code value for this list.
+Returns the index of the first occurrence of the specified element
+in this list, or -1 if this list does not contain the element.
+if this list contains no elements.
+Returns an iterator over the elements in this list in proper sequence.
+lastIndexOf
+Returns the index of the last occurrence of the specified element
+in this list, or -1 if this list does not contain the element.
+ListIterator
+listIterator
+Returns a list iterator over the elements in this list (in proper
+ListIterator
+listIterator
+(int index)
+Returns a list iterator over the elements in this list (in proper
+sequence), starting at the specified position in the list.
+(int index)
+Removes the element at the specified position in this list.
+Removes the first occurrence of the specified element from this list,
+if it is present.
+Removes from this list all of its elements that are contained in the
+specified collection.
+Removes all of the elements of this collection that satisfy the given
+protected void
+removeRange
+(int fromIndex,
+int toIndex)
+Removes from this list all of the elements whose index is between
+, inclusive, and
+, exclusive.
+Retains only the elements in this list that are contained in the
+specified collection.
+(int index,
+Replaces the element at the specified position in this list with
+the specified element.
+Returns the number of elements in this list.
+Spliterator
+spliterator
+late-binding
+Spliterator
+over the elements in this
+(int fromIndex,
+int toIndex)
+Returns a view of the portion of this list between the specified
+, inclusive, and
+, exclusive.
+Returns an array containing all of the elements in this list
+in proper sequence (from first to last element).
+Returns an array containing all of the elements in this list in proper
+sequence (from first to last element); the runtime type of the returned
+array is that of the specified array.
+Trims the capacity of this
+instance to be the
+list's current size.
+Methods declared in class java.util.
+AbstractList
+Methods declared in class java.util.
+AbstractCollection
+containsAll
+Methods declared in class java.lang.
+Methods declared in interface java.util.
+parallelStream
+Methods declared in interface java.util.
+containsAll
+Constructor Details
+(int initialCapacity)
+Constructs an empty list with the specified initial capacity.
+Parameters:
+initialCapacity
+- the initial capacity of the list
+IllegalArgumentException
+- if the specified initial capacity
+is negative
+Constructs an empty list with an initial capacity of ten.
+Constructs a list containing the elements of the specified
+collection, in the order they are returned by the collection's
+Parameters:
+- the collection whose elements are to be placed into this list
+NullPointerException
+- if the specified collection is null
+Method Details
+Trims the capacity of this
+instance to be the
+list's current size.  An application can use this operation to minimize
+the storage of an
+ensureCapacity
+ensureCapacity
+(int minCapacity)
+Increases the capacity of this
+instance, if
+necessary, to ensure that it can hold at least the number of elements
+specified by the minimum capacity argument.
+Parameters:
+minCapacity
+- the desired minimum capacity
+Returns the number of elements in this list.
+Specified by:
+in interface
+Specified by:
+in interface
+the number of elements in this list
+if this list contains no elements.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+if this list contains no elements
+if this list contains the specified element.
+More formally, returns
+if and only if this list contains
+at least one element
+Objects.equals(o, e)
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Parameters:
+- element whose presence in this list is to be tested
+if this list contains the specified element
+Returns the index of the first occurrence of the specified element
+in this list, or -1 if this list does not contain the element.
+More formally, returns the lowest index
+Objects.equals(o, get(i))
+or -1 if there is no such index.
+Specified by:
+in interface
+AbstractList
+Parameters:
+- element to search for
+the index of the first occurrence of the specified element in
+this list, or -1 if this list does not contain the element
+lastIndexOf
+lastIndexOf
+Returns the index of the last occurrence of the specified element
+in this list, or -1 if this list does not contain the element.
+More formally, returns the highest index
+Objects.equals(o, get(i))
+or -1 if there is no such index.
+Specified by:
+lastIndexOf
+in interface
+lastIndexOf
+AbstractList
+Parameters:
+- element to search for
+the index of the last occurrence of the specified element in
+this list, or -1 if this list does not contain the element
+Returns a shallow copy of this
+instance.  (The
+elements themselves are not copied.)
+a clone of this
+Returns an array containing all of the elements in this list
+in proper sequence (from first to last element).
+The returned array will be "safe" in that no references to it are
+maintained by this list.  (In other words, this method must allocate
+a new array).  The caller is thus free to modify the returned array.
+This method acts as bridge between array-based and collection-based
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+an array containing all of the elements in this list in
+proper sequence
+Arrays.asList(Object[])
+Returns an array containing all of the elements in this list in proper
+sequence (from first to last element); the runtime type of the returned
+array is that of the specified array.  If the list fits in the
+specified array, it is returned therein.  Otherwise, a new array is
+allocated with the runtime type of the specified array and the size of
+If the list fits in the specified array with room to spare
+(i.e., the array has more elements than the list), the element in
+the array immediately following the end of the collection is set to
+.  (This is useful in determining the length of the
+if the caller knows that the list does not contain
+any null elements.)
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Type Parameters:
+- the component type of the array to contain the collection
+Parameters:
+- the array into which the elements of the list are to
+be stored, if it is big enough; otherwise, a new array of the
+same runtime type is allocated for this purpose.
+an array containing the elements of the list
+ArrayStoreException
+- if the runtime type of the specified array
+is not a supertype of the runtime type of every element in
+NullPointerException
+- if the specified array is null
+(int index)
+Returns the element at the specified position in this list.
+Specified by:
+in interface
+Specified by:
+AbstractList
+Parameters:
+- index of the element to return
+the element at the specified position in this list
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index >= size()
+(int index,
+Replaces the element at the specified position in this list with
+the specified element.
+Specified by:
+in interface
+AbstractList
+Parameters:
+- index of the element to replace
+- element to be stored at the specified position
+the element previously at the specified position
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index >= size()
+Appends the specified element to the end of this list.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractList
+Parameters:
+- element to be appended to this list
+(as specified by
+Collection.add(E)
+(int index,
+Inserts the specified element at the specified position in this
+list. Shifts the element currently at that position (if any) and
+any subsequent elements to the right (adds one to their indices).
+Specified by:
+in interface
+AbstractList
+Parameters:
+- index at which the specified element is to be inserted
+- element to be inserted
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index > size()
+(int index)
+Removes the element at the specified position in this list.
+Shifts any subsequent elements to the left (subtracts one from their
+Specified by:
+in interface
+AbstractList
+Parameters:
+- the index of the element to be removed
+the element that was removed from the list
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index >= size()
+Compares the specified object with this list for equality.  Returns
+if and only if the specified object is also a list, both
+lists have the same size, and all corresponding pairs of elements in
+the two lists are
+.  (Two elements
+(e1==null ? e2==null :
+e1.equals(e2))
+.)  In other words, two lists are defined to be
+equal if they contain the same elements in the same order.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractList
+Parameters:
+- the object to be compared for equality with this list
+if the specified object is equal to this list
+Object.hashCode()
+Returns the hash code value for this list.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractList
+the hash code value for this list
+Object.equals(java.lang.Object)
+System.identityHashCode(java.lang.Object)
+Removes the first occurrence of the specified element from this list,
+if it is present.  If the list does not contain the element, it is
+unchanged.  More formally, removes the element with the lowest index
+Objects.equals(o, get(i))
+(if such an element exists).  Returns
+if this list
+contained the specified element (or equivalently, if this list
+changed as a result of the call).
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Parameters:
+- element to be removed from this list, if present
+if this list contained the specified element
+Removes all of the elements from this list.  The list will
+be empty after this call returns.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractList
+Appends all of the elements in the specified collection to the end of
+this list, in the order that they are returned by the
+specified collection's Iterator.  The behavior of this operation is
+undefined if the specified collection is modified while the operation
+is in progress.  (This implies that the behavior of this call is
+undefined if the specified collection is this list, and this
+list is nonempty.)
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Parameters:
+- collection containing elements to be added to this list
+if this list changed as a result of the call
+NullPointerException
+- if the specified collection is null
+AbstractCollection.add(Object)
+(int index,
+Inserts all of the elements in the specified collection into this
+list, starting at the specified position.  Shifts the element
+currently at that position (if any) and any subsequent elements to
+the right (increases their indices).  The new elements will appear
+in the list in the order that they are returned by the
+specified collection's iterator.
+Specified by:
+in interface
+AbstractList
+Parameters:
+- index at which to insert the first element from the
+specified collection
+- collection containing elements to be added to this list
+if this list changed as a result of the call
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index > size()
+NullPointerException
+- if the specified collection is null
+removeRange
+removeRange
+(int fromIndex,
+int toIndex)
+Removes from this list all of the elements whose index is between
+, inclusive, and
+, exclusive.
+Shifts any succeeding elements to the left (reduces their index).
+This call shortens the list by
+(toIndex - fromIndex)
+toIndex==fromIndex
+, this operation has no effect.)
+removeRange
+AbstractList
+Parameters:
+- index of first element to be removed
+- index after last element to be removed
+IndexOutOfBoundsException
+is out of range
+fromIndex < 0 ||
+toIndex > size() ||
+toIndex < fromIndex
+Removes from this list all of its elements that are contained in the
+specified collection.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Parameters:
+- collection containing elements to be removed from this list
+if this list changed as a result of the call
+ClassCastException
+- if the class of an element of this list
+is incompatible with the specified collection
+NullPointerException
+- if this list contains a null element and the
+specified collection does not permit null elements
+or if the specified collection is null
+Collection.contains(Object)
+Retains only the elements in this list that are contained in the
+specified collection.  In other words, removes from this list all
+of its elements that are not contained in the specified collection.
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractCollection
+Parameters:
+- collection containing elements to be retained in this list
+if this list changed as a result of the call
+ClassCastException
+- if the class of an element of this list
+is incompatible with the specified collection
+NullPointerException
+- if this list contains a null element and the
+specified collection does not permit null elements
+or if the specified collection is null
+Collection.contains(Object)
+listIterator
+ListIterator
+listIterator
+(int index)
+Returns a list iterator over the elements in this list (in proper
+sequence), starting at the specified position in the list.
+The specified index indicates the first element that would be
+returned by an initial call to
+An initial call to
+return the element with the specified index minus one.
+The returned list iterator is
+Specified by:
+listIterator
+in interface
+listIterator
+AbstractList
+Parameters:
+- index of the first element to be returned from the
+list iterator (by a call to
+a list iterator over the elements in this list (in proper
+sequence), starting at the specified position in the list
+IndexOutOfBoundsException
+- if the index is out of range
+index < 0 || index > size()
+listIterator
+ListIterator
+listIterator
+Returns a list iterator over the elements in this list (in proper
+The returned list iterator is
+Specified by:
+listIterator
+in interface
+listIterator
+AbstractList
+a list iterator over the elements in this list (in proper
+listIterator(int)
+Returns an iterator over the elements in this list in proper sequence.
+The returned iterator is
+Specified by:
+in interface
+Specified by:
+in interface
+Specified by:
+in interface
+AbstractList
+an iterator over the elements in this list in proper sequence
+(int fromIndex,
+int toIndex)
+Returns a view of the portion of this list between the specified
+, inclusive, and
+, exclusive.  (If
+are equal, the returned list is
+empty.)  The returned list is backed by this list, so non-structural
+changes in the returned list are reflected in this list, and vice-versa.
+The returned list supports all of the optional list operations.
+This method eliminates the need for explicit range operations (of
+the sort that commonly exist for arrays).  Any operation that expects
+a list can be used as a range operation by passing a subList view
+instead of a whole list.  For example, the following idiom
+removes a range of elements from a list:
+list.subList(from, to).clear();
+Similar idioms may be constructed for
+indexOf(Object)
+lastIndexOf(Object)
+, and all of the algorithms in the
+Collections
+class can be applied to a subList.
+The semantics of the list returned by this method become undefined if
+the backing list (i.e., this list) is
+structurally modified
+any way other than via the returned list.  (Structural modifications are
+those that change the size of this list, or otherwise perturb it in such
+a fashion that iterations in progress may yield incorrect results.)
+Specified by:
+in interface
+AbstractList
+Parameters:
+- low endpoint (inclusive) of the subList
+- high endpoint (exclusive) of the subList
+a view of the specified range within this list
+IndexOutOfBoundsException
+- if an endpoint index value is out of range
+(fromIndex < 0 || toIndex > size)
+IllegalArgumentException
+- if the endpoint indices are out of order
+(fromIndex > toIndex)
+Description copied from interface:
+Performs the given action for each element of the
+until all elements have been processed or the action throws an
+exception.  Actions are performed in the order of iteration, if that
+order is specified.  Exceptions thrown by the action are relayed to the
+The behavior of this method is unspecified if the action performs
+side-effects that modify the underlying source of elements, unless an
+overriding class has specified a concurrent modification policy.
+Specified by:
+in interface
+Parameters:
+- The action to be performed for each element
+NullPointerException
+- if the specified action is null
+spliterator
+Spliterator
+spliterator
+late-binding
+Spliterator
+over the elements in this
+Spliterator
+Spliterator.SIZED
+Spliterator.SUBSIZED
+Spliterator.ORDERED
+Overriding implementations should document the reporting of additional
+characteristic values.
+Specified by:
+spliterator
+in interface
+Specified by:
+spliterator
+in interface
+Specified by:
+spliterator
+in interface
+Spliterator
+over the elements in this list
+Description copied from interface:
+Removes all of the elements of this collection that satisfy the given
+predicate.  Errors or runtime exceptions thrown during iteration or by
+the predicate are relayed to the caller.
+Specified by:
+in interface
+Parameters:
+- a predicate which returns
+for elements to be
+if any elements were removed
+NullPointerException
+- if the specified filter is null
+Class Integer
+java.lang.Object
+java.lang.Number
+java.lang.Integer
+All Implemented Interfaces:
+Serializable
+ConstantDesc
+public final class
+ConstantDesc
+class wraps a value of the primitive type
+in an object. An object of type
+contains a single field whose type is
+In addition, this class provides several methods for converting
+, as well as other constants and methods useful when
+dealing with an
+value-based
+class; programmers should treat instances that are
+as interchangeable and should not
+use instances for synchronization, or unpredictable behavior may
+occur. For example, in a future release, synchronization may fail.
+Implementation note: The implementations of the "bit twiddling"
+methods (such as
+highestOneBit
+numberOfTrailingZeros
+based on material from Henry S. Warren, Jr.'s
+, (Addison Wesley, 2002).
+Serialized Form
+Field Summary
+Modifier and Type
+Description
+static final int
+The number of bytes used to represent an
+value in two's
+complement binary form.
+static final int
+A constant holding the maximum value an
+static final int
+A constant holding the minimum value an
+static final int
+The number of bits used to represent an
+value in two's
+complement binary form.
+static final
+instance representing the primitive type
+Constructor Summary
+Constructors
+Constructor
+Description
+(int value)
+Deprecated, for removal: This API element is subject to removal in a future version.
+It is rarely appropriate to use this constructor.
+Deprecated, for removal: This API element is subject to removal in a future version.
+It is rarely appropriate to use this constructor.
+Method Summary
+All Methods
+Static Methods
+Instance Methods
+Concrete Methods
+Modifier and Type
+Description
+Returns the number of one-bits in the two's complement binary
+representation of the specified
+Returns the value of this
+after a narrowing primitive conversion.
+Compares two
+values numerically.
+anotherInteger)
+Compares two
+objects numerically.
+compareUnsigned
+Compares two
+values numerically treating the values
+as unsigned.
+describeConstable
+containing the nominal descriptor for this
+instance, which is the instance itself.
+divideUnsigned
+(int dividend,
+int divisor)
+Returns the unsigned quotient of dividing the first argument by
+the second where each argument and the result is interpreted as
+an unsigned value.
+doubleValue
+Returns the value of this
+after a widening primitive conversion.
+Compares this object to the specified object.
+Returns the value of this
+after a widening primitive conversion.
+Determines the integer value of the system property with the
+specified name.
+Determines the integer value of the system property with the
+specified name.
+Returns the integer value of the system property with the
+specified name.
+Returns a hash code for this
+(int value)
+Returns a hash code for an
+value; compatible with
+Integer.hashCode()
+highestOneBit
+value with at most a single one-bit, in the
+position of the highest-order ("leftmost") one-bit in the specified
+Returns the value of this
+Returns the value of this
+after a widening primitive conversion.
+lowestOneBit
+value with at most a single one-bit, in the
+position of the lowest-order ("rightmost") one-bit in the specified
+Returns the greater of two
+as if by calling
+Returns the smaller of two
+as if by calling
+numberOfLeadingZeros
+Returns the number of zero bits preceding the highest-order
+("leftmost") one-bit in the two's complement binary representation
+of the specified
+numberOfTrailingZeros
+Returns the number of zero bits following the lowest-order ("rightmost")
+one-bit in the two's complement binary representation of the specified
+CharSequence
+int beginIndex,
+int endIndex,
+CharSequence
+argument as a signed
+, beginning at the specified
+and extending to
+endIndex - 1
+Parses the string argument as a signed decimal integer.
+Parses the string argument as a signed integer in the radix
+specified by the second argument.
+parseUnsignedInt
+CharSequence
+int beginIndex,
+int endIndex,
+CharSequence
+argument as an unsigned
+the specified
+, beginning at the specified
+and extending to
+endIndex - 1
+parseUnsignedInt
+Parses the string argument as an unsigned decimal integer.
+parseUnsignedInt
+Parses the string argument as an unsigned integer in the radix
+specified by the second argument.
+remainderUnsigned
+(int dividend,
+int divisor)
+Returns the unsigned remainder from dividing the first argument
+by the second where each argument and the result is interpreted
+as an unsigned value.
+resolveConstantDesc
+MethodHandles.Lookup
+Resolves this instance as a
+ConstantDesc
+, the result of which is
+the instance itself.
+Returns the value obtained by reversing the order of the bits in the
+two's complement binary representation of the specified
+reverseBytes
+Returns the value obtained by reversing the order of the bytes in the
+two's complement representation of the specified
+int distance)
+Returns the value obtained by rotating the two's complement binary
+representation of the specified
+value left by the
+specified number of bits.
+rotateRight
+int distance)
+Returns the value obtained by rotating the two's complement binary
+representation of the specified
+value right by the
+specified number of bits.
+Returns the value of this
+after a narrowing primitive conversion.
+Returns the signum function of the specified
+Adds two integers together as per the + operator.
+toBinaryString
+Returns a string representation of the integer argument as an
+unsigned integer in base 2.
+toHexString
+Returns a string representation of the integer argument as an
+unsigned integer in base 16.
+toOctalString
+Returns a string representation of the integer argument as an
+unsigned integer in base 8.
+object representing this
+object representing the
+specified integer.
+Returns a string representation of the first argument in the
+radix specified by the second argument.
+static long
+toUnsignedLong
+Converts the argument to a
+by an unsigned
+conversion.
+toUnsignedString
+Returns a string representation of the argument as an unsigned
+decimal value.
+toUnsignedString
+Returns a string representation of the first argument as an
+unsigned integer value in the radix specified by the second
+instance representing the specified
+object holding the
+value of the specified
+object holding the value
+extracted from the specified
+when parsed
+with the radix given by the second argument.
+Methods declared in class java.lang.
+Field Details
+public static final
+A constant holding the minimum value an
+Constant Field Values
+public static final
+A constant holding the maximum value an
+Constant Field Values
+public static final
+instance representing the primitive type
+public static final
+The number of bits used to represent an
+value in two's
+complement binary form.
+Constant Field Values
+public static final
+The number of bytes used to represent an
+value in two's
+complement binary form.
+Constant Field Values
+Constructor Details
+@Deprecated
+(int value)
+Deprecated, for removal: This API element is subject to removal in a future version.
+It is rarely appropriate to use this constructor. The static factory
+valueOf(int)
+is generally a better choice, as it is
+likely to yield significantly better space and time performance.
+Constructs a newly allocated
+object that
+represents the specified
+Parameters:
+- the value to be represented by the
+@Deprecated
+NumberFormatException
+Deprecated, for removal: This API element is subject to removal in a future version.
+It is rarely appropriate to use this constructor.
+parseInt(String)
+to convert a string to a
+primitive, or use
+valueOf(String)
+to convert a string to an
+Constructs a newly allocated
+object that
+represents the
+value indicated by the
+parameter. The string is converted to an
+value in exactly the manner used by the
+method for radix 10.
+Parameters:
+to be converted to an
+NumberFormatException
+contain a parsable integer.
+Method Details
+public static
+Returns a string representation of the first argument in the
+radix specified by the second argument.
+If the radix is smaller than
+Character.MIN_RADIX
+or larger than
+Character.MAX_RADIX
+, then the radix
+is used instead.
+If the first argument is negative, the first element of the
+result is the ASCII minus character
+). If the first argument is not
+negative, no sign character appears in the result.
+The remaining characters of the result represent the magnitude
+of the first argument. If the magnitude is zero, it is
+represented by a single zero character
+); otherwise, the first character of
+the representation of the magnitude will not be the zero
+character.  The following ASCII characters are used as digits:
+0123456789abcdefghijklmnopqrstuvwxyz
+, then the first
+of these characters
+are used as radix-
+digits in the order shown. Thus,
+the digits for hexadecimal (radix 16) are
+0123456789abcdef
+. If uppercase letters are
+desired, the
+String.toUpperCase()
+be called on the result:
+Integer.toString(n, 16).toUpperCase()
+Parameters:
+- an integer to be converted to a string.
+- the radix to use in the string representation.
+a string representation of the argument in the specified radix.
+Character.MAX_RADIX
+Character.MIN_RADIX
+toUnsignedString
+public static
+toUnsignedString
+Returns a string representation of the first argument as an
+unsigned integer value in the radix specified by the second
+If the radix is smaller than
+Character.MIN_RADIX
+or larger than
+Character.MAX_RADIX
+, then the radix
+is used instead.
+Note that since the first argument is treated as an unsigned
+value, no leading sign character is printed.
+If the magnitude is zero, it is represented by a single zero
+); otherwise,
+the first character of the representation of the magnitude will
+not be the zero character.
+The behavior of radixes and the characters used as digits
+are the same as
+Parameters:
+- an integer to be converted to an unsigned string.
+- the radix to use in the string representation.
+an unsigned string representation of the argument in the specified radix.
+toString(int, int)
+toHexString
+public static
+toHexString
+Returns a string representation of the integer argument as an
+unsigned integer in base 16.
+The unsigned integer value is the argument plus 2
+if the argument is negative; otherwise, it is equal to the
+argument.  This value is converted to a string of ASCII digits
+in hexadecimal (base 16) with no extra leading
+The value of the argument can be recovered from the returned
+Integer.parseUnsignedInt(s, 16)
+If the unsigned magnitude is zero, it is represented by a
+single zero character
+otherwise, the first character of the representation of the
+unsigned magnitude will not be the zero character. The
+following characters are used as hexadecimal digits:
+0123456789abcdef
+These are the characters
+. If uppercase letters are
+desired, the
+String.toUpperCase()
+be called on the result:
+Integer.toHexString(n).toUpperCase()
+class provides formatting and parsing
+of byte arrays and primitives to return a string or adding to an
+formats and parses uppercase or lowercase hexadecimal characters,
+with leading zeros and for byte arrays includes for each byte
+a delimiter, prefix, and suffix.
+Parameters:
+- an integer to be converted to a string.
+the string representation of the unsigned integer value
+represented by the argument in hexadecimal (base 16).
+parseUnsignedInt(String, int)
+toUnsignedString(int, int)
+toOctalString
+public static
+toOctalString
+Returns a string representation of the integer argument as an
+unsigned integer in base 8.
+The unsigned integer value is the argument plus 2
+if the argument is negative; otherwise, it is equal to the
+argument.  This value is converted to a string of ASCII digits
+in octal (base 8) with no extra leading
+The value of the argument can be recovered from the returned
+Integer.parseUnsignedInt(s, 8)
+If the unsigned magnitude is zero, it is represented by a
+single zero character
+otherwise, the first character of the representation of the
+unsigned magnitude will not be the zero character. The
+following characters are used as octal digits:
+These are the characters
+Parameters:
+- an integer to be converted to a string.
+the string representation of the unsigned integer value
+represented by the argument in octal (base 8).
+parseUnsignedInt(String, int)
+toUnsignedString(int, int)
+toBinaryString
+public static
+toBinaryString
+Returns a string representation of the integer argument as an
+unsigned integer in base 2.
+The unsigned integer value is the argument plus 2
+if the argument is negative; otherwise it is equal to the
+argument.  This value is converted to a string of ASCII digits
+in binary (base 2) with no extra leading
+The value of the argument can be recovered from the returned
+Integer.parseUnsignedInt(s, 2)
+If the unsigned magnitude is zero, it is represented by a
+single zero character
+otherwise, the first character of the representation of the
+unsigned magnitude will not be the zero character. The
+) are used as binary digits.
+Parameters:
+- an integer to be converted to a string.
+the string representation of the unsigned integer value
+represented by the argument in binary (base 2).
+parseUnsignedInt(String, int)
+toUnsignedString(int, int)
+public static
+object representing the
+specified integer. The argument is converted to signed decimal
+representation and returned as a string, exactly as if the
+argument and radix 10 were given as arguments to the
+toString(int, int)
+Parameters:
+- an integer to be converted.
+a string representation of the argument in base 10.
+toUnsignedString
+public static
+toUnsignedString
+Returns a string representation of the argument as an unsigned
+decimal value.
+The argument is converted to unsigned decimal representation
+and returned as a string exactly as if the argument and radix
+10 were given as arguments to the
+toUnsignedString(int, int)
+Parameters:
+- an integer to be converted to an unsigned string.
+an unsigned string representation of the argument.
+toUnsignedString(int, int)
+public static
+NumberFormatException
+Parses the string argument as a signed integer in the radix
+specified by the second argument. The characters in the string
+must all be digits of the specified radix (as determined by
+Character.digit(char, int)
+nonnegative value), except that the first character may be an
+ASCII minus sign
+indicate a negative value or an ASCII plus sign
+) to indicate a positive value. The
+resulting integer value is returned.
+An exception of type
+NumberFormatException
+thrown if any of the following situations occurs:
+The first argument is
+or is a string of
+length zero.
+The radix is either smaller than
+Character.MIN_RADIX
+larger than
+Character.MAX_RADIX
+Any character of the string is not a digit of the specified
+radix, except that the first character may be a minus sign
+) or plus sign
+) provided that the
+string is longer than length 1.
+The value represented by the string is not a value of type
+parseInt("0", 10) returns 0
+parseInt("473", 10) returns 473
+parseInt("+42", 10) returns 42
+parseInt("-0", 10) returns 0
+parseInt("-FF", 16) returns -255
+parseInt("1100110", 2) returns 102
+parseInt("2147483647", 10) returns 2147483647
+parseInt("-2147483648", 10) returns -2147483648
+parseInt("2147483648", 10) throws a NumberFormatException
+parseInt("99", 8) throws a NumberFormatException
+parseInt("Kona", 10) throws a NumberFormatException
+parseInt("Kona", 27) returns 411787
+Parameters:
+containing the integer
+representation to be parsed
+- the radix to be used while parsing
+the integer represented by the string argument in the
+specified radix.
+NumberFormatException
+does not contain a parsable
+public static
+CharSequence
+int beginIndex,
+int endIndex,
+NumberFormatException
+CharSequence
+argument as a signed
+, beginning at the specified
+and extending to
+endIndex - 1
+The method does not take steps to guard against the
+CharSequence
+being mutated while parsing.
+Parameters:
+CharSequence
+containing the
+representation to be parsed
+- the beginning index, inclusive.
+- the ending index, exclusive.
+- the radix to be used while parsing
+represented by the subsequence in
+the specified radix.
+NullPointerException
+IndexOutOfBoundsException
+negative, or if
+is greater than
+is greater than
+NumberFormatException
+CharSequence
+contain a parsable
+in the specified
+is either smaller than
+Character.MIN_RADIX
+or larger than
+Character.MAX_RADIX
+public static
+NumberFormatException
+Parses the string argument as a signed decimal integer. The
+characters in the string must all be decimal digits, except
+that the first character may be an ASCII minus sign
+) to indicate a negative value or an
+ASCII plus sign
+indicate a positive value. The resulting integer value is
+returned, exactly as if the argument and the radix 10 were
+given as arguments to the
+parseInt(java.lang.String, int)
+Parameters:
+containing the
+representation to be parsed
+the integer value represented by the argument in decimal.
+NumberFormatException
+- if the string does not contain a
+parsable integer.
+parseUnsignedInt
+public static
+parseUnsignedInt
+NumberFormatException
+Parses the string argument as an unsigned integer in the radix
+specified by the second argument.  An unsigned integer maps the
+values usually associated with negative numbers to positive
+numbers larger than
+The characters in the string must all be digits of the
+specified radix (as determined by whether
+Character.digit(char, int)
+returns a nonnegative
+value), except that the first character may be an ASCII plus
+). The resulting
+integer value is returned.
+An exception of type
+NumberFormatException
+thrown if any of the following situations occurs:
+The first argument is
+or is a string of
+length zero.
+The radix is either smaller than
+Character.MIN_RADIX
+larger than
+Character.MAX_RADIX
+Any character of the string is not a digit of the specified
+radix, except that the first character may be a plus sign
+) provided that the
+string is longer than length 1.
+The value represented by the string is larger than the
+largest unsigned
+Parameters:
+containing the unsigned integer
+representation to be parsed
+- the radix to be used while parsing
+the integer represented by the string argument in the
+specified radix.
+NumberFormatException
+does not contain a parsable
+parseUnsignedInt
+public static
+parseUnsignedInt
+CharSequence
+int beginIndex,
+int endIndex,
+NumberFormatException
+CharSequence
+argument as an unsigned
+the specified
+, beginning at the specified
+and extending to
+endIndex - 1
+The method does not take steps to guard against the
+CharSequence
+being mutated while parsing.
+Parameters:
+CharSequence
+containing the unsigned
+representation to be parsed
+- the beginning index, inclusive.
+- the ending index, exclusive.
+- the radix to be used while parsing
+the unsigned
+represented by the subsequence in
+the specified radix.
+NullPointerException
+IndexOutOfBoundsException
+negative, or if
+is greater than
+is greater than
+NumberFormatException
+CharSequence
+contain a parsable unsigned
+in the specified
+is either smaller than
+Character.MIN_RADIX
+or larger than
+Character.MAX_RADIX
+parseUnsignedInt
+public static
+parseUnsignedInt
+NumberFormatException
+Parses the string argument as an unsigned decimal integer. The
+characters in the string must all be decimal digits, except
+that the first character may be an ASCII plus sign
+). The resulting integer value
+is returned, exactly as if the argument and the radix 10 were
+given as arguments to the
+parseUnsignedInt(java.lang.String, int)
+Parameters:
+containing the unsigned
+representation to be parsed
+the unsigned integer value represented by the argument in decimal.
+NumberFormatException
+- if the string does not contain a
+parsable unsigned integer.
+public static
+NumberFormatException
+object holding the value
+extracted from the specified
+when parsed
+with the radix given by the second argument. The first argument
+is interpreted as representing a signed integer in the radix
+specified by the second argument, exactly as if the arguments
+were given to the
+parseInt(java.lang.String, int)
+method. The result is an
+object that
+represents the integer value specified by the string.
+In other words, this method returns an
+object equal to the value of:
+new Integer(Integer.parseInt(s, radix))
+Parameters:
+- the string to be parsed.
+- the radix to be used in interpreting
+object holding the value
+represented by the string argument in the specified
+NumberFormatException
+does not contain a parsable
+public static
+NumberFormatException
+object holding the
+value of the specified
+. The argument is
+interpreted as representing a signed decimal integer, exactly
+as if the argument were given to the
+parseInt(java.lang.String)
+method. The result is an
+object that represents the integer value
+specified by the string.
+In other words, this method returns an
+object equal to the value of:
+new Integer(Integer.parseInt(s))
+Parameters:
+- the string to be parsed.
+object holding the value
+represented by the string argument.
+NumberFormatException
+- if the string cannot be parsed
+as an integer.
+public static
+instance representing the specified
+value.  If a new
+instance is not
+required, this method should generally be used in preference to
+the constructor
+Integer(int)
+, as this method is likely
+to yield significantly better space and time performance by
+caching frequently requested values.
+This method will always cache values in the range -128 to 127,
+inclusive, and may cache other values outside of this range.
+Parameters:
+instance representing
+Returns the value of this
+after a narrowing primitive conversion.
+the numeric value represented by this object after conversion
+Java Language Specification
+5.1.3 Narrowing Primitive Conversion
+Returns the value of this
+after a narrowing primitive conversion.
+the numeric value represented by this object after conversion
+Java Language Specification
+5.1.3 Narrowing Primitive Conversion
+Returns the value of this
+Specified by:
+the numeric value represented by this object after conversion
+Returns the value of this
+after a widening primitive conversion.
+Specified by:
+the numeric value represented by this object after conversion
+Java Language Specification
+5.1.2 Widening Primitive Conversion
+toUnsignedLong(int)
+Returns the value of this
+after a widening primitive conversion.
+Specified by:
+the numeric value represented by this object after conversion
+Java Language Specification
+5.1.2 Widening Primitive Conversion
+doubleValue
+doubleValue
+Returns the value of this
+after a widening primitive conversion.
+Specified by:
+doubleValue
+the numeric value represented by this object after conversion
+Java Language Specification
+5.1.2 Widening Primitive Conversion
+object representing this
+'s value. The value is converted to signed
+decimal representation and returned as a string, exactly as if
+the integer value were given as an argument to the
+toString(int)
+a string representation of the value of this object in
+Returns a hash code for this
+a hash code value for this object, equal to the
+value represented by this
+Object.equals(java.lang.Object)
+System.identityHashCode(java.lang.Object)
+public static
+(int value)
+Returns a hash code for an
+value; compatible with
+Integer.hashCode()
+Parameters:
+- the value to hash
+a hash code value for an
+Compares this object to the specified object.  The result is
+if and only if the argument is not
+object that
+contains the same
+value as this object.
+Parameters:
+- the object to compare with.
+if the objects are the same;
+Object.hashCode()
+public static
+Determines the integer value of the system property with the
+specified name.
+The first argument is treated as the name of a system
+property.  System properties are accessible through the
+System.getProperty(java.lang.String)
+method. The
+string value of this property is then interpreted as an integer
+value using the grammar supported by
+object representing this value is returned.
+If there is no property with the specified name, if the
+specified name is empty or
+, or if the property
+does not have the correct numeric format, then
+In other words, this method returns an
+object equal to the value of:
+getInteger(nm, null)
+Parameters:
+- property name.
+value of the property.
+SecurityException
+- for the same reasons as
+System.getProperty
+System.getProperty(java.lang.String)
+System.getProperty(java.lang.String, java.lang.String)
+public static
+Determines the integer value of the system property with the
+specified name.
+The first argument is treated as the name of a system
+property.  System properties are accessible through the
+System.getProperty(java.lang.String)
+method. The
+string value of this property is then interpreted as an integer
+value using the grammar supported by
+object representing this value is returned.
+The second argument is the default value. An
+that represents the value of the second argument is returned if there
+is no property of the specified name, if the property does not have
+the correct numeric format, or if the specified name is empty or
+In other words, this method returns an
+equal to the value of:
+getInteger(nm, new Integer(val))
+but in practice it may be implemented in a manner such as:
+Integer result = getInteger(nm, null);
+return (result == null) ? new Integer(val) : result;
+to avoid the unnecessary allocation of an
+object when the default value is not needed.
+Parameters:
+- property name.
+- default value.
+value of the property.
+SecurityException
+- for the same reasons as
+System.getProperty
+System.getProperty(java.lang.String)
+System.getProperty(java.lang.String, java.lang.String)
+public static
+Returns the integer value of the system property with the
+specified name.  The first argument is treated as the name of a
+system property.  System properties are accessible through the
+System.getProperty(java.lang.String)
+The string value of this property is then interpreted as an
+integer value, as per the
+object representing this value is
+returned; in summary:
+If the property value begins with the two ASCII characters
+or the ASCII character
+followed by a minus sign, then the rest of it is parsed as a
+hexadecimal integer exactly as by the method
+valueOf(java.lang.String, int)
+with radix 16.
+If the property value begins with the ASCII character
+followed by another character, it is parsed as an
+octal integer exactly as by the method
+valueOf(java.lang.String, int)
+with radix 8.
+Otherwise, the property value is parsed as a decimal integer
+exactly as by the method
+valueOf(java.lang.String, int)
+with radix 10.
+The second argument is the default value. The default value is
+returned if there is no property of the specified name, if the
+property does not have the correct numeric format, or if the
+specified name is empty or
+Parameters:
+- property name.
+- default value.
+value of the property.
+SecurityException
+- for the same reasons as
+System.getProperty
+System.getProperty(java.lang.String)
+System.getProperty(java.lang.String, java.lang.String)
+public static
+NumberFormatException
+Accepts decimal, hexadecimal, and octal numbers given
+by the following grammar:
+DecodableString:
+DecimalNumeral
+OctalDigits
+DecimalNumeral
+OctalDigits
+are as defined in section
+The Java Language Specification
+except that underscores are not accepted between digits.
+The sequence of characters following an optional
+sign and/or radix specifier ("
+", or leading zero) is parsed as by the
+Integer.parseInt
+method with the indicated radix (10, 16, or
+8).  This sequence of characters must represent a positive
+NumberFormatException
+will be thrown.  The
+result is negated if first character of the specified
+is the minus sign.  No whitespace characters are
+permitted in the
+Parameters:
+object holding the
+value represented by
+NumberFormatException
+contain a parsable integer.
+parseInt(java.lang.String, int)
+anotherInteger)
+Compares two
+objects numerically.
+Specified by:
+in interface
+Parameters:
+anotherInteger
+to be compared.
+equal to the argument
+; a value less than
+is numerically less
+than the argument
+; and a value greater
+is numerically
+greater than the argument
+comparison).
+public static
+Compares two
+values numerically.
+The value returned is identical to what would be returned by:
+Integer.valueOf(x).compareTo(Integer.valueOf(y))
+Parameters:
+- the first
+- the second
+a value less than
+a value greater than
+compareUnsigned
+public static
+compareUnsigned
+Compares two
+values numerically treating the values
+as unsigned.
+Parameters:
+- the first
+- the second
+; a value less
+as unsigned values; and
+a value greater than
+unsigned values
+toUnsignedLong
+public static
+toUnsignedLong
+Converts the argument to a
+by an unsigned
+conversion.  In an unsigned conversion to a
+high-order 32 bits of the
+are zero and the
+low-order 32 bits are equal to the bits of the integer
+Consequently, zero and positive
+values are mapped
+to a numerically equal
+value and negative
+values are mapped to a
+value equal to the
+input plus 2
+Parameters:
+- the value to convert to an unsigned
+the argument converted to
+by an unsigned
+divideUnsigned
+public static
+divideUnsigned
+(int dividend,
+int divisor)
+Returns the unsigned quotient of dividing the first argument by
+the second where each argument and the result is interpreted as
+an unsigned value.
+Note that in two's complement arithmetic, the three other
+basic arithmetic operations of add, subtract, and multiply are
+bit-wise identical if the two operands are regarded as both
+being signed or both being unsigned.  Therefore separate
+addUnsigned
+, etc. methods are not provided.
+Parameters:
+- the value to be divided
+- the value doing the dividing
+the unsigned quotient of the first argument divided by
+the second argument
+remainderUnsigned(int, int)
+remainderUnsigned
+public static
+remainderUnsigned
+(int dividend,
+int divisor)
+Returns the unsigned remainder from dividing the first argument
+by the second where each argument and the result is interpreted
+as an unsigned value.
+Parameters:
+- the value to be divided
+- the value doing the dividing
+the unsigned remainder of the first argument divided by
+the second argument
+divideUnsigned(int, int)
+highestOneBit
+public static
+highestOneBit
+value with at most a single one-bit, in the
+position of the highest-order ("leftmost") one-bit in the specified
+value.  Returns zero if the specified value has no
+one-bits in its two's complement binary representation, that is, if it
+is equal to zero.
+Parameters:
+- the value whose highest one bit is to be computed
+value with a single one-bit, in the position
+of the highest-order one-bit in the specified value, or zero if
+the specified value is itself equal to zero.
+lowestOneBit
+public static
+lowestOneBit
+value with at most a single one-bit, in the
+position of the lowest-order ("rightmost") one-bit in the specified
+value.  Returns zero if the specified value has no
+one-bits in its two's complement binary representation, that is, if it
+is equal to zero.
+Parameters:
+- the value whose lowest one bit is to be computed
+value with a single one-bit, in the position
+of the lowest-order one-bit in the specified value, or zero if
+the specified value is itself equal to zero.
+numberOfLeadingZeros
+public static
+numberOfLeadingZeros
+Returns the number of zero bits preceding the highest-order
+("leftmost") one-bit in the two's complement binary representation
+of the specified
+value.  Returns 32 if the
+specified value has no one-bits in its two's complement representation,
+in other words if it is equal to zero.
+Note that this method is closely related to the logarithm base 2.
+For all positive
+31 - numberOfLeadingZeros(x)
+32 - numberOfLeadingZeros(x - 1)
+Parameters:
+- the value whose number of leading zeros is to be computed
+the number of zero bits preceding the highest-order
+("leftmost") one-bit in the two's complement binary representation
+of the specified
+value, or 32 if the value
+is equal to zero.
+numberOfTrailingZeros
+public static
+numberOfTrailingZeros
+Returns the number of zero bits following the lowest-order ("rightmost")
+one-bit in the two's complement binary representation of the specified
+value.  Returns 32 if the specified value has no
+one-bits in its two's complement representation, in other words if it is
+equal to zero.
+Parameters:
+- the value whose number of trailing zeros is to be computed
+the number of zero bits following the lowest-order ("rightmost")
+one-bit in the two's complement binary representation of the
+value, or 32 if the value is equal
+public static
+Returns the number of one-bits in the two's complement binary
+representation of the specified
+value.  This function is
+sometimes referred to as the
+population count
+Parameters:
+- the value whose bits are to be counted
+the number of one-bits in the two's complement binary
+representation of the specified
+public static
+int distance)
+Returns the value obtained by rotating the two's complement binary
+representation of the specified
+value left by the
+specified number of bits.  (Bits shifted out of the left hand, or
+high-order, side reenter on the right, or low-order.)
+Note that left rotation with a negative distance is equivalent to
+right rotation:
+rotateLeft(val, -distance) == rotateRight(val,
+.  Note also that rotation by any multiple of 32 is a
+no-op, so all but the last five bits of the rotation distance can be
+ignored, even if the distance is negative:
+rotateLeft(val,
+distance) == rotateLeft(val, distance & 0x1F)
+Parameters:
+- the value whose bits are to be rotated left
+- the number of bit positions to rotate left
+the value obtained by rotating the two's complement binary
+representation of the specified
+value left by the
+specified number of bits.
+rotateRight
+public static
+rotateRight
+int distance)
+Returns the value obtained by rotating the two's complement binary
+representation of the specified
+value right by the
+specified number of bits.  (Bits shifted out of the right hand, or
+low-order, side reenter on the left, or high-order.)
+Note that right rotation with a negative distance is equivalent to
+left rotation:
+rotateRight(val, -distance) == rotateLeft(val,
+.  Note also that rotation by any multiple of 32 is a
+no-op, so all but the last five bits of the rotation distance can be
+ignored, even if the distance is negative:
+rotateRight(val,
+distance) == rotateRight(val, distance & 0x1F)
+Parameters:
+- the value whose bits are to be rotated right
+- the number of bit positions to rotate right
+the value obtained by rotating the two's complement binary
+representation of the specified
+value right by the
+specified number of bits.
+public static
+Returns the value obtained by reversing the order of the bits in the
+two's complement binary representation of the specified
+Parameters:
+- the value to be reversed
+the value obtained by reversing order of the bits in the
+public static
+Returns the signum function of the specified
+value.  (The
+return value is -1 if the specified value is negative; 0 if the
+specified value is zero; and 1 if the specified value is positive.)
+Parameters:
+- the value whose signum is to be computed
+the signum function of the specified
+reverseBytes
+public static
+reverseBytes
+Returns the value obtained by reversing the order of the bytes in the
+two's complement representation of the specified
+Parameters:
+- the value whose bytes are to be reversed
+the value obtained by reversing the bytes in the specified
+public static
+Adds two integers together as per the + operator.
+Parameters:
+- the first operand
+- the second operand
+BinaryOperator
+public static
+Returns the greater of two
+as if by calling
+Parameters:
+- the first operand
+- the second operand
+the greater of
+BinaryOperator
+public static
+Returns the smaller of two
+as if by calling
+Parameters:
+- the first operand
+- the second operand
+the smaller of
+BinaryOperator
+describeConstable
+describeConstable
+containing the nominal descriptor for this
+instance, which is the instance itself.
+Specified by:
+describeConstable
+in interface
+describing the
+resolveConstantDesc
+resolveConstantDesc
+MethodHandles.Lookup
+Resolves this instance as a
+ConstantDesc
+, the result of which is
+the instance itself.
+Specified by:
+resolveConstantDesc
+in interface
+ConstantDesc
+Parameters:

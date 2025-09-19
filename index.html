@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CogniDesk</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./node_modules/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="./node_modules/codemirror/theme/dracula.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>CogniDesk</h3>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#page-dashboard">Dashboard</a></li>
+                <li><a href="#page-learn">Learn</a></li>
+                <li><a href="#page-practice">Practice</a></li>
+                <li><a href="#page-code-playground">Code Playground</a></li>
+                <li><a href="#page-settings">Settings</a></li>
+            </ul>
+        </nav>
+        <div class="content-container">
+            <main id="page-dashboard" class="page">
+                <header class="main-header">
+                    <h2>Welcome back, User!</h2>
+                </header>
+
+                <section class="dashboard-grid">
+                    <div class="card" id="progress-card">
+                        <h4>Current Stage: Java Basics</h4>
+                        <p>Progress:</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 60%;">60%</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Today's Goal</h4>
+                        <p>Complete lesson on 'Variables'</p>
+                    </div>
+                    <div class="card">
+                        <h4>Streak</h4>
+                        <p>🔥 5 Days</p>
+                    </div>
+                    <div class="card">
+                        <h4>Badges</h4>
+                        <p>🏆 Beginner, 🥉 First Steps</p>
+                    </div>
+                </section>
+            </main>
+            <main id="page-learn" class="page hidden">
+                <header class="main-header">
+                    <h2>Learn Java</h2>
+                </header>
+                <!-- <p>The lesson content will go here.</p> -->
+
+
+                <div class="learn-layout">
+                    <aside class="lesson-topics">
+                        <h4>Java Basics</h4>
+                        <ul>
+                            <li><a href="#" data-lesson="variables" class="active-lesson">Variables and Data Types</a>
+                            </li>
+                            <li><a href="#" data-lesson="operators">Operators</a></li>
+                            <li><a href="#" data-lesson="control-flow">Control Flow (If/Else)</a></li>
+                            <li><a href="#" data-lesson="loops">Loops (For, While)</a></li>
+                        </ul>
+                    </aside>
+                    <section class="lesson-content">
+                        <h3>Variables and Data Types</h3>
+                        <p>In Java, a variable is a container that holds a value. Before you can use a variable, you
+                            must declare it by specifying its type and name.</p>
+                        <p>There are eight primitive data types in Java:</p>
+                        <ul>
+                            <li><b>byte</b>, <b>short</b>, <b>int</b>, <b>long</b> for whole numbers.</li>
+                            <li><b>float</b>, <b>double</b> for floating-point numbers.</li>
+                            <li><b>char</b> for single characters.</li>
+                            <li><b>boolean</b> for true/false values.</li>
+                        </ul>
+                        <h4>Example Code:</h4>
+                        <pre><code>// Declaring an integer variable
+
+
+            </main>
+            
+            <main id="page-practice" class="page hidden">
+               <header class="main-header">
+                    <h2>Practice Quiz: Java Basics</h2>
+               </header>
+               <div class="ai-generator-card">
+            <h4>AI Practice Question Generator</h4>
+            <p>Click the button to ask your custom AI to generate a new practice question about Java variables.</p>
+            <button id="generate-question-btn">Generate Question</button>
+            <div class="ai-response-box">
+                <p id="ai-generated-question">Your AI-generated question will appear here...</p>
+            </div>
+        </div>
+                <div class="quiz-container">
+                <p id="question-text">What is the correct syntax for the main method in Java?</p>
+                <div id="options-container" class="options-grid">
+                </div>
+                <div class="quiz-feedback">
+                <p id="feedback-text"></p>
+                 </div>
+                <div class="quiz-navigation">
+                <button id="submit-btn">Check Answer</button>
+                <button id="next-btn" class="hidden">Next Question</button>
+                </div>
+                 </div>
+            </main>
+            <main id="page-code-playground" class="page hidden">
+                <header class="main-header">
+                    <h2>Code Playground</h2>
+                </header>
+                <div class="playground-container">
+                    <textarea id="code-editor" placeholder="Write your Java code here..."></textarea>
+                    <button id="explain-code-btn">Explain with AI</button>
+<div class="explanation-box">
+    <h4>AI Explanation:</h4>
+    <div id="explanation-output">The explanation for your code will appear here.</div>
+</div>
+                </div>
+            </main>
+            <main id="page-settings" class="page hidden">
+                <header class="main-header">
+                    <h2>Settings</h2>
+                </header>
+                <p>Application settings and configuration options will go here.</p>
+            </main>
+        </div>
+    </div>
+    <div id="details-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Stage 1: Java Basics</h3>
+            <ul class="lesson-list">
+                <li><span class="status-icon done">✔</span> Introduction to Java</li>
+                <li><span class="status-icon done">✔</span> Setting up Your Environment</li>
+                <li><span class="status-icon progress">▶</span> Variables and Data Types</li>
+                <li><span class="status-icon todo">◻</span> Operators</li>
+                <li><span class="status-icon todo">◻</span> Control Flow (If/Else)</li>
+            </ul>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>

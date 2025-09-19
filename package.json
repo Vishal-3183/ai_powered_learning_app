@@ -1,0 +1,43 @@
+{
+  "name": "cognidesk-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^31.2.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.cognidesk.app",
+    "productName": "CogniDesk",
+    "files": [
+      "main.js",
+      "index.html",
+      "style.css",
+      "renderer.js",
+      "preload.js"
+    ],
+    "extraResources": [
+      {
+        "from": "backend/dist/cognidesk-backend.exe",
+        "to": "cognidesk-backend.exe"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "cscLink": null
+    }
+  },
+  "dependencies": {
+    "codemirror": "^5.65.20",
+    "marked": "^4.3.0"
+  }
+}

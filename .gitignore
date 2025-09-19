@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+cognidesk-java-model/
+final_model/
+venv/
+javanotes5.pdf
